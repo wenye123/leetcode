@@ -2,7 +2,7 @@
  * https://leetcode-cn.com/problems/reverse-linked-list/
  */
 
-import { List, createListTail, ListNode } from "./utils/List";
+import { List, createListTail, ListNode } from "../base/List";
 
 function reverseList<T>(list: ListNode<T>) {
   const tmp = new List(null) as any;

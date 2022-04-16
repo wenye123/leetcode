@@ -2,7 +2,7 @@
  * https://leetcode-cn.com/problems/merge-two-sorted-lists/
  */
 
-import { List, ListNode, createListTail, printList } from "./utils/List";
+import { List, ListNode, createListTail, printList } from "../base/List";
 
 /**
  * 递归

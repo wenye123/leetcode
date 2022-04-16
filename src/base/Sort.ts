@@ -1,3 +1,5 @@
+/** 排序 */
+
 function swap(arr: number[], a: number, b: number) {
   const tmp = arr[a];
   arr[a] = arr[b];

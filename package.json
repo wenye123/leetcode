@@ -16,7 +16,7 @@
     "format": "prettier --write \"./{src,benchmark,test}/**/*.{js,ts,json,yaml}\"",
     "compile": "rm -rf dist && tsc",
     "prepublish": "npm run compile",
-    "test": "npm run format && mocha test/test-*.ts",
+    "test": "npm run format && mocha test/**/test-*.ts",
     "test:cov": "nyc mocha test/test-*.ts"
   },
   "nyc": {

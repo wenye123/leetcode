@@ -2,7 +2,7 @@
  * https://leetcode-cn.com/problems/palindrome-linked-list/submissions/
  */
 
-import { createListTail, ListNode } from "./utils/List";
+import { createListTail, ListNode } from "../base/List";
 
 function isPalindrome<T>(head: ListNode<T>) {
   const arr: T[] = [];
