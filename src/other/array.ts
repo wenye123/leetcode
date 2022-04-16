@@ -49,4 +49,3 @@ export function mergeSortArrReverse(arr1: number[], arr2: number[]) {
 
 console.log(mergeSortArrForward([1, 2, 4, 5], [2, 5, 6]));
 console.log(mergeSortArrReverse([1, 2, 4, 5], [2, 5, 6]));
-

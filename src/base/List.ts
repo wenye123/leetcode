@@ -36,6 +36,6 @@ export function printList<T>(list: ListNode<T>) {
   let curr = list;
   while (curr !== null) {
     console.log(curr.val);
-    curr = curr.next
+    curr = curr.next;
   }
 }

@@ -50,4 +50,3 @@ export function binarySearch(nums: number[], key: number) {
 }
 
 // 有序查找 - 插值查找
-

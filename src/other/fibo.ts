@@ -24,7 +24,6 @@ function fibo2(n: number) {
   return sum;
 }
 
-
 /** 去掉重复循环的递归版本 */
 function fibo3(n: number) {
   function _fibo(n: number, prev1: number, prev2: number): number {
@@ -38,7 +37,7 @@ function fibo3(n: number) {
 /** 记忆版本优化递归 */
 function memozi(fn: Function) {
   const obj: any = {};
-  return function(n: number) {
+  return function (n: number) {
     if (obj[n] === undefined) {
       obj[n] = fn(n);
       return obj[n];
@@ -47,7 +46,7 @@ function memozi(fn: Function) {
     }
   };
 }
-const fibo4 = memozi(function(n: number) {
+const fibo4 = memozi(function (n: number) {
   if (n === 1) return 1;
   if (n === 2) return 2;
   return fibo4(n - 1) + fibo4(n - 2);
