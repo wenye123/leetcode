@@ -18,7 +18,7 @@ describe("algorithm", function () {
     });
 
     it("有序查找-折半查找", function () {
-      let ret = binarySearch([1, 2, 3, 4], 3);
+      const ret = binarySearch([1, 2, 3, 4], 3);
       assert.strictEqual(ret, 2);
     });
   });

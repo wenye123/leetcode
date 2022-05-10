@@ -13,7 +13,9 @@
     "dist"
   ],
   "scripts": {
-    "format": "prettier --write \"./{src,benchmark,test}/**/*.{js,ts,json,yaml}\"",
+    "init-husky": "husky install && husky add .husky/pre-commit 'npx lint-staged' && husky add .husky/commit-msg 'npx --no-install commitlint --edit \"$1\"'",
+    "commit": "git-cz",
+    "format": "prettier --write \"./{src,benchmark,test}/**/*.{js,ts,json,yaml,yml}\"",
     "compile": "rm -rf dist && tsc",
     "prepublish": "npm run compile",
     "test": "npm run format && mocha test/**/test-*.ts",
@@ -37,15 +39,31 @@
     ]
   },
   "devDependencies": {
+    "@commitlint/config-conventional": "^16.2.4",
     "@types/chai": "^4.2.11",
     "@types/mocha": "^7.0.2",
     "@types/node": "^13.11.1",
+    "@typescript-eslint/eslint-plugin": "^5.23.0",
+    "@typescript-eslint/parser": "^5.23.0",
     "chai": "^4.2.0",
+    "commitizen": "^4.2.4",
+    "commitlint": "^16.2.4",
     "coveralls": "^3.0.11",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.15.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "husky": "^7.0.4",
+    "lint-staged": "^12.4.1",
     "mocha": "^7.1.1",
     "nyc": "^15.0.1",
-    "prettier": "^2.0.4",
+    "prettier": "^2.6.2",
     "ts-node": "^8.8.2",
     "typescript": "^3.8.3"
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   }
 }
