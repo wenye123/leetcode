@@ -1,4 +1,4 @@
 {
-  "./{src,benchmark,test}/**/*.{js,ts,json,yaml,yml}": ["prettier --write"],
-  "./*.{js,json,yaml,yml,md}": ["prettier --write"]
+  "./{src,benchmark,test}/**/*.{js,ts,json,yaml,yml}": ["prettier --write", "eslint --fix", "eslint"],
+  "./*.{js,json,yaml,yml,md}": ["prettier --write", "eslint --fix", "eslint"]
 }
