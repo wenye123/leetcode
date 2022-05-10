@@ -13,7 +13,7 @@
     "dist"
   ],
   "scripts": {
-    "init-husky": "husky install && husky add .husky/pre-commit 'npx lint-staged' && husky add .husky/commit-msg 'npx --no-install commitlint --edit \"$1\"'",
+    "init-husky": "husky install && husky add .husky/pre-commit 'npx lint-staged --verbose' && husky add .husky/commit-msg 'npx --no-install commitlint --edit \"$1\"'",
     "commit": "git-cz",
     "format": "prettier --write \"./{src,benchmark,test}/**/*.{js,ts,json,yaml,yml}\"",
     "compile": "rm -rf dist && tsc",
