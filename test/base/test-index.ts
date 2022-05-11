@@ -1,7 +1,7 @@
 import { binarySearch, sentrySearch, sentrySearch2 } from "../../src/base/Search";
 import { assert } from "chai";
 
-describe("algorithm", function () {
+describe("基础", function () {
   describe("查找", function () {
     it("线性查找-无哨兵查找", function () {
       let ret = sentrySearch([3, 5, 7], 7);

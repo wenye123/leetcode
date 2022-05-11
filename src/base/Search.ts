@@ -49,4 +49,4 @@ export function binarySearch(nums: number[], key: number) {
   return -1;
 }
 
-// 有序查找 - 插值查找
+// 斐波那契查找
