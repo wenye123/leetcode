@@ -48,5 +48,3 @@ export function binarySearch(nums: number[], key: number) {
   }
   return -1;
 }
-
-// 斐波那契查找
