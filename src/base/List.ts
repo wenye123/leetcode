@@ -30,12 +30,3 @@ export function createListTail<T>(arr: T[]) {
   }
   return head;
 }
-
-/** 打印链表 */
-export function printList<T>(list: ListNode<T>) {
-  let curr = list;
-  while (curr !== null) {
-    console.log(curr.val);
-    curr = curr.next;
-  }
-}

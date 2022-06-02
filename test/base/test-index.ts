@@ -13,6 +13,7 @@ import {
   swapSort,
   swapSort2,
 } from "../../src/base/Sort";
+import { Node, traversalRecursive, traversalTree } from "../../src/base/Tree";
 
 describe("基础", function () {
   describe("查找", function () {
@@ -35,7 +36,7 @@ describe("基础", function () {
       assert.strictEqual(ret, 2);
     });
   });
-  describe.only("排序", function () {
+  describe("排序", function () {
     let nums: number[] = [];
     let sortNums = [1, 2, 3, 4, 6, 8, 9];
     beforeEach(() => {
@@ -86,6 +87,72 @@ describe("基础", function () {
     it("改进算法-快速排序-栈循环分区版", function () {
       fastSort3(nums);
       assert.deepStrictEqual(nums, sortNums);
+    });
+  });
+  describe.only("树", function () {
+    /**
+     *      a
+     *     / \
+     *    b   c
+     *   / \   \
+     *  d  e   f
+     *
+     * 前序遍历: abdecf
+     * 中序遍历: dbeacf
+     * 后序遍历: debfca
+     */
+    const tree: Node = {
+      val: "a",
+      left: {
+        val: "b",
+        left: {
+          val: "d",
+          left: null,
+          right: null,
+        },
+        right: {
+          val: "e",
+          left: null,
+          right: null,
+        },
+      },
+      right: {
+        val: "c",
+        left: null,
+        right: {
+          val: "f",
+          left: null,
+          right: null,
+        },
+      },
+    };
+    const before = ["a", "b", "d", "e", "c", "f"];
+    const middle = ["d", "b", "e", "a", "c", "f"];
+    const after = ["d", "e", "b", "f", "c", "a"];
+
+    it("递归遍历-前序遍历", function () {
+      const arr = traversalRecursive(tree, "before");
+      assert.deepStrictEqual(arr, before);
+    });
+    it("递归遍历-中序遍历", function () {
+      const arr = traversalRecursive(tree, "middle");
+      assert.deepStrictEqual(arr, middle);
+    });
+    it("递归遍历-后序遍历", function () {
+      const arr = traversalRecursive(tree, "after");
+      assert.deepStrictEqual(arr, after);
+    });
+    it("非递归-栈遍历-前序遍历", function () {
+      const arr = traversalTree(tree, "before");
+      assert.deepStrictEqual(arr, before);
+    });
+    it("非递归-栈遍历-中序遍历", function () {
+      const arr = traversalTree(tree, "middle");
+      assert.deepStrictEqual(arr, middle);
+    });
+    it("非递归-栈遍历-后序遍历", function () {
+      const arr = traversalTree(tree, "after");
+      assert.deepStrictEqual(arr, after);
     });
   });
 });
