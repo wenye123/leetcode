@@ -1,5 +1,15 @@
-## 模板介绍
+#### 命令
 
-### commit 规范
+```bash
+# 全部测试
+npm run test
 
-安装`commitizen`和`cz-conventional-changelog`规范 commit 的格式
+# 测试指定文件 如test/base/test-index.ts
+./bin/tdd.sh base index
+```
+
+#### 基础
+
+![测试](./docs/imgs/1.png)
+
+#### leetcode

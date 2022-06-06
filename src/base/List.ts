@@ -30,3 +30,14 @@ export function createListTail<T>(arr: T[]) {
   }
   return head;
 }
+
+/** 遍历链表 */
+export function traversalList<T>(list: ListNode<T>): T[] {
+  const arr: T[] = [];
+  let curr = list;
+  while (curr !== null) {
+    arr.push(curr!.val);
+    curr = curr.next;
+  }
+  return arr;
+}
