@@ -15,8 +15,51 @@ import {
 } from "../../src/base/Sort";
 import { Node, traversalRecursive, traversalTree } from "../../src/base/Tree";
 import { createListHead, createListTail, traversalList } from "../../src/base/List";
+import {
+  factorial,
+  factorialByFor,
+  factorialWithTail,
+  fibo,
+  fiboByFor,
+  fiboWithMemory,
+  fiboWithTail,
+} from "../../src/base/Recursive";
 
 describe("基础", function () {
+  describe("递归", function () {
+    describe("阶乘", function () {
+      it("递归", function () {
+        const ret = factorial(5);
+        assert.strictEqual(ret, 120);
+      });
+      it("尾递归", function () {
+        const ret = factorialWithTail(5);
+        assert.strictEqual(ret, 120);
+      });
+      it("for循环", function () {
+        const ret = factorialByFor(5);
+        assert.strictEqual(ret, 120);
+      });
+    });
+    describe("斐波那契", function () {
+      it("重复计算的递归版本", function () {
+        const ret = fibo(10);
+        assert.strictEqual(ret, 55);
+      });
+      it("带缓存的递归版本", function () {
+        const ret = fiboWithMemory(10);
+        assert.strictEqual(ret, 55);
+      });
+      it("尾递归优化", function () {
+        const ret = fiboWithTail(10);
+        assert.strictEqual(ret, 55);
+      });
+      it("for循环版本", function () {
+        const ret = fiboByFor(10);
+        assert.strictEqual(ret, 55);
+      });
+    });
+  });
   describe("查找", function () {
     it("线性查找-无哨兵查找", function () {
       let ret = sentrySearch([3, 5, 7], 7);

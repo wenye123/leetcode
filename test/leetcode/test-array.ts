@@ -1,7 +1,7 @@
 import { assert } from "chai";
-import { twoSum, twoSumWithMap } from "../../src/leetcode/1.数组/1.两数之和";
-import { removeDuplicates } from "../../src/leetcode/1.数组/26.删除排序数组中的重复项";
-import { removeElement } from "../../src/leetcode/1.数组/27.移除元素";
+import { twoSum, twoSumWithMap } from "../../src/leetcode/基本-数组/1.两数之和";
+import { removeDuplicates } from "../../src/leetcode/基本-数组/26.删除排序数组中的重复项";
+import { removeElement } from "../../src/leetcode/基本-数组/27.移除元素";
 
 describe("数组", function () {
   describe("1.两数之和", function () {
