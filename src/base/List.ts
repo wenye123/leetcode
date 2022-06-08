@@ -1,9 +1,9 @@
 export class List<T> {
   val: T;
   next: ListNode<T>;
-  constructor(val: T) {
+  constructor(val: T, next?: ListNode<T>) {
     this.val = val;
-    this.next = null;
+    this.next = next || null;
   }
 }
 export type ListNode<T> = List<T> | null;
