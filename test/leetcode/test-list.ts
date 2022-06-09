@@ -1,6 +1,7 @@
 import { assert } from "chai";
 import { createListTail, traversalList } from "../../src/base/List";
 import { hasCycle } from "../../src/leetcode/数据结构-链表/141.环形链表";
+import { LRUCache } from "../../src/leetcode/数据结构-链表/146.LRU缓存";
 import {
   removeElements,
   removeElementsByRecursive,
@@ -77,6 +78,22 @@ describe("链表", function () {
         const ret = hasCycle(example.arg1);
         assert.deepStrictEqual(example.ret1, ret);
       });
+    });
+  });
+  describe("146.LRU缓存", function () {
+    it("map实现", function () {
+      const cache = new LRUCache(2);
+      cache.put(1, 1);
+      cache.put(2, 2);
+      cache.put(1, 1); // 重新访问 让1移动到尾部
+      cache.put(3, 3); // 超过容量会删除掉头部的2
+      const map = cache._getMap();
+      assert.strictEqual(map.size, 2);
+      const arr: number[] = [];
+      map.forEach((val, key) => {
+        arr.push(key);
+      });
+      assert.deepStrictEqual(arr, [1, 3]);
     });
   });
 });
