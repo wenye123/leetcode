@@ -13,7 +13,7 @@ import {
   swapSort,
   swapSort2,
 } from "../../src/base/Sort";
-import { Node, traversalRecursive, traversalTree } from "../../src/base/Tree";
+import { Tree, traversalRecursive, traversalTree, createTree } from "../../src/base/Tree";
 import { createListHead, createListTail, traversalList } from "../../src/base/List";
 import {
   factorial,
@@ -145,6 +145,36 @@ describe("基础", function () {
     });
   });
   describe("树", function () {
+    const cases = [
+      {
+        arg: [],
+        ret: null,
+      },
+      {
+        arg: [1, null, 2, 3, 4, null, null, 5],
+        ret: {
+          val: 1,
+          left: null,
+          right: {
+            val: 2,
+            left: {
+              val: 3,
+              left: null,
+              right: null,
+            },
+            right: {
+              val: 4,
+              left: {
+                val: 5,
+                left: null,
+                right: null,
+              },
+              right: null,
+            },
+          },
+        },
+      },
+    ];
     /**
      *      a
      *     / \
@@ -156,7 +186,7 @@ describe("基础", function () {
      * 中序遍历: dbeacf
      * 后序遍历: debfca
      */
-    const tree: Node = {
+    const tree: Tree<string> = {
       val: "a",
       left: {
         val: "b",
@@ -185,6 +215,12 @@ describe("基础", function () {
     const middle = ["d", "b", "e", "a", "c", "f"];
     const after = ["d", "e", "b", "f", "c", "a"];
 
+    it("生成树", function () {
+      cases.forEach((item) => {
+        const ret = createTree(item.arg);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
     it("递归遍历-前序遍历", function () {
       const arr = traversalRecursive(tree, "before");
       assert.deepStrictEqual(arr, before);
