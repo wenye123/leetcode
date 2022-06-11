@@ -1,4 +1,4 @@
-class TreeNode<T> {
+export class TreeNode<T> {
   val: T;
   left: Tree<T>;
   right: Tree<T>;
