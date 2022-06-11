@@ -29,3 +29,11 @@ export function maxDepth<T>(root: Tree<T>): number {
 
   return maxDepth;
 }
+
+/** 通过递归 */
+export function maxDepthByRecursive<T>(root: Tree<T>): number {
+  // 终止条件
+  if (root === null) return 0;
+  // 判断左右子树的深度
+  return Math.max(maxDepthByRecursive(root.left), maxDepthByRecursive(root.right)) + 1;
+}
