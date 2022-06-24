@@ -1,5 +1,6 @@
 import { assert } from "chai";
 import { twoSum, twoSumWithMap } from "../../src/leetcode/基本-数组/1.两数之和";
+import { threeSum } from "../../src/leetcode/基本-数组/15.三数之和";
 import { removeDuplicates } from "../../src/leetcode/基本-数组/26.删除排序数组中的重复项";
 import { removeElement } from "../../src/leetcode/基本-数组/27.移除元素";
 
@@ -15,6 +16,25 @@ describe("数组", function () {
     it("借助map", function () {
       const ret = twoSumWithMap(arg1, arg2);
       assert.deepStrictEqual(ret, ret1);
+    });
+  });
+  describe("15.三数之和", function () {
+    const examples = [
+      {
+        arg: [-1, 0, 1, 2, -1, -4],
+        ret: [
+          [-1, -1, 2],
+          [-1, 0, 1],
+        ],
+      },
+      { arg: [], ret: [] },
+      { arg: [0], ret: [] },
+    ];
+    it("排序+双指针", function () {
+      examples.forEach((example) => {
+        const ret = threeSum(example.arg);
+        assert.deepStrictEqual(ret, example.ret);
+      });
     });
   });
   describe("26.删除排序数组中的重复项", function () {
