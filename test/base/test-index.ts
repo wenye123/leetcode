@@ -13,7 +13,18 @@ import {
   swapSort,
   swapSort2,
 } from "../../src/base/Sort";
-import { Tree, traversalRecursive, traversalTree, createTree } from "../../src/base/Tree";
+import {
+  Tree,
+  dfsTreeByRecursive,
+  dfsTree,
+  createTree,
+  bfsTreeByRecursive,
+  bfsTree,
+  dfSearchTreeRecursive,
+  dfSearchTree,
+  bsSearchTreeByRecursive,
+  bfSearchTree,
+} from "../../src/base/Tree";
 import { createListHead, createListTail, traversalList } from "../../src/base/List";
 import {
   factorial,
@@ -214,6 +225,12 @@ describe("基础", function () {
     const before = ["a", "b", "d", "e", "c", "f"];
     const middle = ["d", "b", "e", "a", "c", "f"];
     const after = ["d", "e", "b", "f", "c", "a"];
+    const bfs = ["a", "b", "c", "d", "e", "f"];
+
+    const searchCase = [
+      { arg1: tree, arg2: "e", ret: true },
+      { arg1: tree, arg2: "g", ret: false },
+    ];
 
     it("生成树", function () {
       cases.forEach((item) => {
@@ -221,29 +238,61 @@ describe("基础", function () {
         assert.deepStrictEqual(ret, item.ret);
       });
     });
-    it("递归遍历-前序遍历", function () {
-      const arr = traversalRecursive(tree, "before");
+    it("深度优先遍历-递归-前序遍历", function () {
+      const arr = dfsTreeByRecursive(tree, "before");
       assert.deepStrictEqual(arr, before);
     });
-    it("递归遍历-中序遍历", function () {
-      const arr = traversalRecursive(tree, "middle");
+    it("深度优先遍历-递归-中序遍历", function () {
+      const arr = dfsTreeByRecursive(tree, "middle");
       assert.deepStrictEqual(arr, middle);
     });
-    it("递归遍历-后序遍历", function () {
-      const arr = traversalRecursive(tree, "after");
+    it("深度优先遍历-递归-后序遍历", function () {
+      const arr = dfsTreeByRecursive(tree, "after");
       assert.deepStrictEqual(arr, after);
     });
-    it("非递归-栈遍历-前序遍历", function () {
-      const arr = traversalTree(tree, "before");
+    it("深度优先遍历-非递归栈实现-前序遍历", function () {
+      const arr = dfsTree(tree, "before");
       assert.deepStrictEqual(arr, before);
     });
-    it("非递归-栈遍历-中序遍历", function () {
-      const arr = traversalTree(tree, "middle");
+    it("深度优先遍历-非递归栈实现-中序遍历", function () {
+      const arr = dfsTree(tree, "middle");
       assert.deepStrictEqual(arr, middle);
     });
-    it("非递归-栈遍历-后序遍历", function () {
-      const arr = traversalTree(tree, "after");
+    it("深度优先遍历-非递归栈实现-后序遍历", function () {
+      const arr = dfsTree(tree, "after");
       assert.deepStrictEqual(arr, after);
+    });
+    it("广度优先遍历-递归", function () {
+      const arr = bfsTreeByRecursive(tree);
+      assert.deepStrictEqual(arr, bfs);
+    });
+    it("广度优先遍历-非递归", function () {
+      const arr = bfsTree(tree);
+      assert.deepStrictEqual(arr, bfs);
+    });
+    it("深度优先搜索-递归", function () {
+      searchCase.forEach((item) => {
+        const ret = dfSearchTreeRecursive(item.arg1, item.arg2);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+    it("深度优先搜索-非递归", function () {
+      searchCase.forEach((item) => {
+        const ret = dfSearchTree(item.arg1, item.arg2);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+    it("广度优先搜索-递归", function () {
+      searchCase.forEach((item) => {
+        const ret = bsSearchTreeByRecursive(item.arg1, item.arg2);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+    it("广度优先搜索-非递归", function () {
+      searchCase.forEach((item) => {
+        const ret = bfSearchTree(item.arg1, item.arg2);
+        assert.deepStrictEqual(ret, item.ret);
+      });
     });
   });
 });
