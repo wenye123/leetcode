@@ -41,43 +41,53 @@ export function factorialByFor(n: number) {
 }
 
 /**
- * 斐波那契/兔子繁殖 F(1)=1，F(2)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 3，n ∈ N*）
- *   例子: 1、1、2、3、5、8、13、21、34
+ * 斐波那契/兔子繁殖 F(0)=0 F(1)=1，F(2)=1, F(n)=F(n - 1)+F(n - 2)（n ≥ 2，n ∈ N*）
+ *   例子: 0、1、1、2、3、5、8、13、21、34
  *
  * 计算第n天后有多少只兔子
  */
 
 /** 重复计算的递归版本 */
 export function fibo(n: number): number {
-  if (n <= 2) return 1;
+  if (n <= 1) return n;
   return fibo(n - 1) + fibo(n - 2);
 }
 
 /** 记忆版本递归优化 */
-const memorize = [1, 1];
+const memorize = [0, 1];
 export function fiboWithMemory(n: number): number {
-  if (memorize[n - 1] === undefined) {
-    memorize[n - 1] = fiboWithMemory(n - 1) + fiboWithMemory(n - 2);
+  if (memorize[n] === undefined) {
+    memorize[n] = fiboWithMemory(n - 1) + fiboWithMemory(n - 2);
   }
-  return memorize[n - 1];
+  return memorize[n];
 }
 
 /** 尾递归优化 */
-export function fiboWithTail(n: number, prev = 1, next = 1): number {
-  if (n <= 2) return next;
+export function fiboWithTail(n: number, prev = 0, next = 1): number {
+  if (n === 0) return 0;
+  if (n === 1) return next;
   return fiboWithTail(n - 1, next, prev + next);
 }
 
 /** for循环版本 */
 export function fiboByFor(n: number) {
-  if (n <= 2) return 1;
-  let prev = 1,
+  if (n <= 1) return n;
+  let prev = 0,
     next = 1,
     sum = 0;
-  for (let i = 3; i <= n; i++) {
+  for (let i = 2; i <= n; i++) {
     sum = prev + next;
     prev = next;
     next = sum;
   }
   return sum;
+}
+
+/** 动态规划实现 */
+export function fiboByDp(n: number): number {
+  const dp = [0, 1];
+  for (let i = 2; i <= n; i++) {
+    dp[i] = dp[i - 1] + dp[i - 2];
+  }
+  return dp[n];
 }
