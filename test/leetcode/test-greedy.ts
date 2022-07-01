@@ -1,5 +1,6 @@
 import assert from "assert";
 import { canJump, canJump2 } from "../../src/leetcode/算法-贪心/44.跳跃游戏";
+import { findContentChildren } from "../../src/leetcode/算法-贪心/455.分发饼干";
 import { lemonadeChange } from "../../src/leetcode/算法-贪心/860.柠檬水找零";
 
 describe("贪心算法", function () {
@@ -21,7 +22,6 @@ describe("贪心算法", function () {
       });
     });
   });
-
   describe("44.跳跃游戏", function () {
     const cases = [
       {
@@ -42,6 +42,26 @@ describe("贪心算法", function () {
     it("从后向前判断", function () {
       cases.forEach((item) => {
         const ret = canJump2(item.arg);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("455.分发饼干", function () {
+    const cases = [
+      {
+        arg1: [1, 2, 3],
+        arg2: [1, 1],
+        ret: 1,
+      },
+      {
+        arg1: [1, 2],
+        arg2: [1, 2, 3],
+        ret: 2,
+      },
+    ];
+    it("贪心+双指针", function () {
+      cases.forEach((item) => {
+        const ret = findContentChildren(item.arg1, item.arg2);
         assert.strictEqual(ret, item.ret);
       });
     });
