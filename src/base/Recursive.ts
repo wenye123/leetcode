@@ -47,7 +47,7 @@ export function factorialByFor(n: number) {
  * 计算第n天后有多少只兔子
  */
 
-/** 重复计算的递归版本 */
+/** 重复计算的递归版本: 复杂度2^n */
 export function fibo(n: number): number {
   if (n <= 1) return n;
   return fibo(n - 1) + fibo(n - 2);
@@ -73,14 +73,13 @@ export function fiboWithTail(n: number, prev = 0, next = 1): number {
 export function fiboByFor(n: number) {
   if (n <= 1) return n;
   let prev = 0,
-    next = 1,
-    sum = 0;
+    next = 1;
   for (let i = 2; i <= n; i++) {
-    sum = prev + next;
+    let sum = prev + next;
     prev = next;
     next = sum;
   }
-  return sum;
+  return next;
 }
 
 /** 动态规划实现 */
