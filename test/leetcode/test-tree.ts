@@ -2,6 +2,7 @@ import assert from "assert";
 import { createTree } from "../../src/base/Tree";
 import { maxDepth, maxDepthByRecursive } from "../../src/leetcode/数据结构-树/104. 二叉树的最大深度";
 import { invertTree, invertTreeByRecursive } from "../../src/leetcode/数据结构-树/226. 翻转二叉树";
+import { inorderTraversal, inorderTraversal2 } from "../../src/leetcode/数据结构-树/94. 二叉树的中序遍历";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -54,6 +55,35 @@ describe("树", function () {
     it("递归", function () {
       examples.forEach((example) => {
         const ret = invertTreeByRecursive(example.arg);
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("94. 二叉树的中序遍历", function () {
+    const EXAMPLES = () => [
+      {
+        arg: createTree([1, null, 2, 3]),
+        ret: [1, 3, 2],
+      },
+      {
+        arg: createTree([]),
+        ret: [],
+      },
+    ];
+    let examples = EXAMPLES();
+    beforeEach(() => {
+      examples = EXAMPLES();
+    });
+
+    it("递归", function () {
+      examples.forEach((example) => {
+        const ret = inorderTraversal(example.arg);
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+    it("循环", function () {
+      examples.forEach((example) => {
+        const ret = inorderTraversal2(example.arg);
         assert.deepStrictEqual(ret, example.ret);
       });
     });
