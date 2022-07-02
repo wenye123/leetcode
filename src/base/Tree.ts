@@ -22,7 +22,7 @@ export class TreeNode<T> {
   }
 }
 export type Tree<T> = TreeNode<T> | null;
-export type TraversalType = "before" | "middle" | "after";
+export type TraversalType = "prev" | "middle" | "after";
 
 /**
  * 层序生成树
@@ -73,7 +73,7 @@ export function createTree<T>(arr: T[]) {
 /** 深度优先遍历-递归 */
 export function dfsTreeByRecursive<T>(root: Tree<T>, type: TraversalType): T[] {
   if (root === null) return [];
-  if (type === "before") {
+  if (type === "prev") {
     return [root.val, ...dfsTreeByRecursive(root.left, type), ...dfsTreeByRecursive(root.right, type)];
   } else if (type === "middle") {
     return [...dfsTreeByRecursive(root.left, type), root.val, ...dfsTreeByRecursive(root.right, type)];
@@ -85,25 +85,26 @@ export function dfsTreeByRecursive<T>(root: Tree<T>, type: TraversalType): T[] {
 }
 
 /** 深度优先遍历-非递归栈实现 */
+interface StackItem<T> {
+  color: "white" | "gray";
+  node: TreeNode<T>;
+}
 export function dfsTree<T>(root: Tree<T>, type: TraversalType) {
   if (root === null) return [];
-  const stack: any[] = [];
+  const stack: StackItem<T>[] = [];
   const arr: T[] = [];
-  stack.push({
-    color: "white",
-    node: root,
-  });
+  stack.push({ color: "white", node: root });
   while (stack.length !== 0) {
-    const { node, color } = stack.pop();
+    const { node, color } = stack.pop()!;
     if (color === "gray") {
       arr.push(node.val);
     } else {
-      // 这里注意 要先判断推右节点 再推左节点
+      // 这里注意 先推右节点 再推左节点
       if (type === "after") stack.push({ color: "gray", node }); // 后序遍历
       if (node.right) stack.push({ color: "white", node: node.right });
       if (type === "middle") stack.push({ color: "gray", node }); // 中序遍历
       if (node.left) stack.push({ color: "white", node: node.left });
-      if (type === "before") stack.push({ color: "gray", node }); // 前序遍历
+      if (type === "prev") stack.push({ color: "gray", node }); // 前序遍历
     }
   }
   return arr;

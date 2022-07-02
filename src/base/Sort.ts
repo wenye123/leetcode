@@ -167,20 +167,18 @@ export function mergeSort1(nums: number[]): number[] {
   return merge(mergeSort1(leftNums), mergeSort1(rightNums));
 }
 
-// 归并排序-循环递归版
+// 归并排序-循环版
 export function mergeSort2(nums: number[]) {
   // 步长为1 每轮翻倍 直到最大为数组长度
   for (let step = 1; step <= nums.length; step = 2 * step) {
     log("----step----", step);
-    for (let index = 0; index + step <= nums.length; index += 2 * step) {
+    for (let index = 0; index < nums.length; index += 2 * step) {
       // 计算子序列索引
       const left = index;
-      const middle = index + step;
+      let middle = index + step;
+      if (middle >= nums.length) middle = nums.length; // 边界判断
       let right = index + 2 * step;
-      if (right >= nums.length) {
-        // 如果右边的值超过数组长度则重置为数组长度
-        right = nums.length;
-      }
+      if (right >= nums.length) right = nums.length; // 边界判断
       // 获取子序列
       const leftNums = nums.slice(left, middle);
       const rightNums = nums.slice(middle, right);
@@ -193,6 +191,7 @@ export function mergeSort2(nums: number[]) {
       }
     }
   }
+  return nums;
 }
 
 /**
@@ -203,18 +202,6 @@ export function mergeSort2(nums: number[]) {
  *     递归左右数组
  *   时间复杂度为最优O(logn)最差o(n^2) 空间复杂度最优O(logn)最差o(n) 不稳定
  */
-
-// 通过双指针进行分区
-function partition(nums: number[], left: number, right: number) {
-  const pivotVal = nums[left]; // 选择左边索引值作为基准
-  while (left < right) {
-    while (left < right && nums[right] >= pivotVal) right--;
-    swap(nums, left, right);
-    while (left < right && nums[left] <= pivotVal) left++;
-    swap(nums, left, right);
-  }
-  return left;
-}
 
 // 快速排序-递归内存版
 export function fastSort1(nums: number[]): number[] {
@@ -235,6 +222,20 @@ export function fastSort1(nums: number[]): number[] {
   return [...fastSort1(left), curr, ...fastSort1(right)];
 }
 
+// 通过双指针进行分区
+function partition(nums: number[], left: number, right: number) {
+  const pivotVal = nums[left]; // 选择左边索引值作为基准
+  while (left < right) {
+    // 如果比基准值小则交换到左边
+    while (left < right && nums[right] >= pivotVal) right--;
+    swap(nums, left, right);
+    // 比基准值大就交换到右边
+    while (left < right && nums[left] <= pivotVal) left++;
+    swap(nums, left, right);
+  }
+  return left;
+}
+
 // 快速排序-递归分区版
 function _fastSort2(nums: number[], left: number, right: number) {
   if (left < right) {
@@ -245,6 +246,7 @@ function _fastSort2(nums: number[], left: number, right: number) {
 }
 export function fastSort2(nums: number[]) {
   _fastSort2(nums, 0, nums.length - 1);
+  return nums;
 }
 
 // 快速排序-栈循环分区版
@@ -256,7 +258,7 @@ export function fastSort3(nums: number[]) {
   log("stack", stack);
   // 只要存在未排序的子数组则循环
   while (stack.length > 0) {
-    const [left, right] = stack.pop() as number[];
+    const [left, right] = stack.pop()!;
     log("pop", [left, right]);
     const pivot = partition(nums, left, right);
     // 左侧有未排序元素则推入栈
@@ -270,4 +272,5 @@ export function fastSort3(nums: number[]) {
       log("stack", stack);
     }
   }
+  return nums;
 }
