@@ -8,6 +8,7 @@
     1. 定义状态: i表示金额 dp[i]表示金额需要硬币数目
     2. 定义转移方程式: dp[i] = Math.min(dp[i], dp[amount - currCoin] + 1)
     3. 确定初始条件和遍历顺序
+    4. 边界判断
 
     [1, 2, 5] amount=11
     dp[11] = Math.min(dp[11-1], dp[11-2], dp[11-5]) + 1 = Math.min(dp[10], dp[9], dp[6]) + 1

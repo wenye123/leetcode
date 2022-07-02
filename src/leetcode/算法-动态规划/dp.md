@@ -10,6 +10,7 @@
     // 1. 定义状态: i表示n dp[i]表示结果
     // 2. 定义转移方程式: dp[i] = dp[i-1]+dp[i-2]
     // 3. 确定初始条件和遍历顺序
+    // 4. 边界判断
     function fibByDp(n: number): number {
       const dp = [0, 1];
       for (let i = 2; i <= n; i++) {

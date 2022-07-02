@@ -13,6 +13,7 @@ export function fib(n: number): number {
     1. 定义状态: i表示n dp[i]表示结果
     2. 定义转移方程式: dp[i] = dp[i-1]+dp[i-2]
     3. 确定初始条件和遍历顺序
+    4. 边界判断
  */
 export function fibByDp(n: number): number {
   // 初始条件

@@ -7,11 +7,12 @@
  *   1. 转移状态: i等于数组的索引 dp[i]表示最长递增子序列
  *   2. 转移方程式: dp[i] = Math.max(dp[i], dp[j]+1)
  *   3. 初始条件和遍历顺序
+ *   4. 边界判断
  *
  * 复杂度O(n^2)
  */
 export function lengthOfLIS(nums: number[]): number {
-  // 边界
+  // 边界判断
   if (nums.length === 0) return 0;
   // 转移状态和初始条件
   const dp = new Array(nums.length).fill(1);
