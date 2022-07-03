@@ -2,6 +2,7 @@ import { assert } from "chai";
 import { twoSum, twoSumWithMap } from "../../src/leetcode/基本-数组/1.两数之和";
 import { threeSum } from "../../src/leetcode/基本-数组/15.三数之和";
 import { twoSum2 } from "../../src/leetcode/基本-数组/167. 两数之和2";
+import { minSubArrayLen, minSubArrayLen2 } from "../../src/leetcode/基本-数组/209. 长度最小的子数组";
 import { removeDuplicates } from "../../src/leetcode/基本-数组/26.删除排序数组中的重复项";
 import { removeElement } from "../../src/leetcode/基本-数组/27.移除元素";
 import { moveZeroes } from "../../src/leetcode/基本-数组/283.移动零";
@@ -113,6 +114,37 @@ describe("数组", function () {
     it("头尾指针", function () {
       cases.forEach((item) => {
         const ret = sortedSquares(item.arg);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("209. 长度最小的子数组", function () {
+    const cases = [
+      {
+        arg1: 7,
+        arg2: [2, 3, 1, 2, 4, 3],
+        ret: 2,
+      },
+      {
+        arg1: 4,
+        arg2: [1, 4, 4],
+        ret: 1,
+      },
+      {
+        arg1: 11,
+        arg2: [1, 1, 1, 1, 1, 1, 1, 1],
+        ret: 0,
+      },
+    ];
+    it("暴力解法", function () {
+      cases.forEach((item) => {
+        const ret = minSubArrayLen(item.arg1, item.arg2);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+    it("快慢指针", function () {
+      cases.forEach((item) => {
+        const ret = minSubArrayLen2(item.arg1, item.arg2);
         assert.deepStrictEqual(ret, item.ret);
       });
     });
