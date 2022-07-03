@@ -4,19 +4,19 @@
 
 /**
  * 有序数组: 代表可以顺序判断 不用担心同个元素分散在天涯各地
- * 如何去掉重复元素: 通过双指针 如果两个值相同则跳过 不相同则赋值给下一个
+ * 如何去掉重复元素: 通过快慢指针 如果值相同则不动 不同则慢指针移动一位 并将快指针的值赋值给慢指针
  */
 
 export function removeDuplicates(nums: number[]): number {
   if (nums.length === 0) return 0;
-
-  let i = 0,
-    j = 1;
-  while (j < nums.length) {
-    if (nums[i] !== nums[j]) {
-      nums[++i] = nums[j];
+  let slow = 0,
+    fast = 0;
+  while (fast < nums.length) {
+    if (nums[slow] !== nums[fast]) {
+      slow++;
+      nums[slow] = nums[fast];
     }
-    j++;
+    fast++;
   }
-  return i + 1;
+  return slow + 1;
 }
