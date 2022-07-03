@@ -5,6 +5,7 @@ import { twoSum2 } from "../../src/leetcode/基本-数组/167. 两数之和2";
 import { removeDuplicates } from "../../src/leetcode/基本-数组/26.删除排序数组中的重复项";
 import { removeElement } from "../../src/leetcode/基本-数组/27.移除元素";
 import { moveZeroes } from "../../src/leetcode/基本-数组/283.移动零";
+import { sortedSquares } from "../../src/leetcode/基本-数组/977. 有序数组的平方";
 
 describe("数组", function () {
   describe("1.两数之和", function () {
@@ -94,6 +95,24 @@ describe("数组", function () {
     it("头尾指针", function () {
       cases.forEach((item) => {
         const ret = twoSum2(item.arg1, item.arg2);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("977. 有序数组的平方", function () {
+    const cases = [
+      {
+        arg: [-4, -1, 0, 3, 10],
+        ret: [0, 1, 9, 16, 100],
+      },
+      {
+        arg: [-7, -3, 2, 3, 11],
+        ret: [4, 9, 9, 49, 121],
+      },
+    ];
+    it("头尾指针", function () {
+      cases.forEach((item) => {
+        const ret = sortedSquares(item.arg);
         assert.deepStrictEqual(ret, item.ret);
       });
     });
