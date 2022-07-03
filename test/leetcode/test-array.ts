@@ -1,6 +1,7 @@
 import { assert } from "chai";
 import { twoSum, twoSumWithMap } from "../../src/leetcode/基本-数组/1.两数之和";
 import { threeSum } from "../../src/leetcode/基本-数组/15.三数之和";
+import { twoSum2 } from "../../src/leetcode/基本-数组/167. 两数之和2";
 import { removeDuplicates } from "../../src/leetcode/基本-数组/26.删除排序数组中的重复项";
 import { removeElement } from "../../src/leetcode/基本-数组/27.移除元素";
 import { moveZeroes } from "../../src/leetcode/基本-数组/283.移动零";
@@ -74,6 +75,26 @@ describe("数组", function () {
       cases.forEach((item) => {
         moveZeroes(item.arg);
         assert.deepStrictEqual(item.arg, item.ret);
+      });
+    });
+  });
+  describe("167. 两数之和2", function () {
+    const cases = [
+      {
+        arg1: [2, 7, 11, 15],
+        arg2: 9,
+        ret: [1, 2],
+      },
+      {
+        arg1: [2, 3, 4],
+        arg2: 6,
+        ret: [1, 3],
+      },
+    ];
+    it("头尾指针", function () {
+      cases.forEach((item) => {
+        const ret = twoSum2(item.arg1, item.arg2);
+        assert.deepStrictEqual(ret, item.ret);
       });
     });
   });
