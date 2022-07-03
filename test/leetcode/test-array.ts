@@ -6,6 +6,7 @@ import { minSubArrayLen, minSubArrayLen2 } from "../../src/leetcode/基本-数�
 import { removeDuplicates } from "../../src/leetcode/基本-数组/26.删除排序数组中的重复项";
 import { removeElement } from "../../src/leetcode/基本-数组/27.移除元素";
 import { moveZeroes } from "../../src/leetcode/基本-数组/283.移动零";
+import { reverseString } from "../../src/leetcode/基本-数组/344. 反转字符串";
 import { sortedSquares } from "../../src/leetcode/基本-数组/977. 有序数组的平方";
 
 describe("数组", function () {
@@ -146,6 +147,20 @@ describe("数组", function () {
       cases.forEach((item) => {
         const ret = minSubArrayLen2(item.arg1, item.arg2);
         assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("344. 反转字符串", function () {
+    const cases = [
+      {
+        arg: ["h", "e", "l", "l", "o"],
+        ret: ["o", "l", "l", "e", "h"],
+      },
+    ];
+    it("头尾指针", function () {
+      cases.forEach((item) => {
+        reverseString(item.arg);
+        assert.deepStrictEqual(item.ret, item.arg);
       });
     });
   });
