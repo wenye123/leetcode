@@ -10,6 +10,7 @@ import {
 } from "../../src/leetcode/数据结构-链表/203.移除链表元素";
 import { reverseList } from "../../src/leetcode/数据结构-链表/206. 反转链表";
 import { mergeTwoLists, mergeTwoLists2 } from "../../src/leetcode/数据结构-链表/22.合并有序链表";
+import { isPalindrome } from "../../src/leetcode/数据结构-链表/234.回文链表";
 import { middleNode } from "../../src/leetcode/数据结构-链表/876. 链表的中间结点";
 
 describe("链表", function () {
@@ -191,6 +192,26 @@ describe("链表", function () {
       cases.forEach((item) => {
         const ret = middleNode(item.arg);
         assert.deepStrictEqual(traversalList(ret), item.ret);
+      });
+    });
+  });
+  describe("234.回文链表", function () {
+    const CASES = () => [
+      {
+        arg: createListTail([1, 2, 2, 1]),
+        ret: true,
+      },
+      {
+        arg: createListTail([1, 2]),
+        ret: false,
+      },
+    ];
+    let cases = CASES();
+    beforeEach(() => (cases = CASES()));
+    it("快慢指针+头插前半部分", function () {
+      cases.forEach((item) => {
+        const ret = isPalindrome(item.arg);
+        assert.deepStrictEqual(ret, item.ret);
       });
     });
   });
