@@ -2,12 +2,13 @@ import { assert } from "chai";
 import { createListHead, createListTail, traversalList } from "../../src/base/List";
 import { hasCycle } from "../../src/leetcode/数据结构-链表/141.环形链表";
 import { LRUCache } from "../../src/leetcode/数据结构-链表/146.LRU缓存";
+import { removeNthFromEnd, removeNthFromEnd2 } from "../../src/leetcode/数据结构-链表/19. 删除链表的倒数第 N 个结点";
 import {
   removeElements,
   removeElementsByRecursive,
   removeElementsBySentry,
 } from "../../src/leetcode/数据结构-链表/203.移除链表元素";
-import { reverseList, reverseList2 } from "../../src/leetcode/数据结构-链表/206. 反转链表";
+import { reverseList } from "../../src/leetcode/数据结构-链表/206. 反转链表";
 
 describe("链表", function () {
   describe("203.移除链表元素", function () {
@@ -109,15 +110,39 @@ describe("链表", function () {
       },
     ];
 
-    it("哨兵+头插法+新建节点", function () {
+    it("头插法", function () {
       cases.forEach((item) => {
         const ret = reverseList(item.arg);
         assert.deepStrictEqual(traversalList(ret), item.ret);
       });
     });
-    it("哨兵+头插法+利用已有节点", function () {
+  });
+  describe("19. 删除链表的倒数第 N 个结点", function () {
+    const CASES = () => [
+      {
+        arg1: createListTail([1, 2, 3, 4, 5]),
+        arg2: 2,
+        ret: [1, 2, 3, 5],
+      },
+      {
+        arg1: createListTail([1]),
+        arg2: 1,
+        ret: [],
+      },
+    ];
+    let cases = CASES();
+    this.beforeEach(() => {
+      cases = CASES();
+    });
+    it("尾插法+额外数组", function () {
       cases.forEach((item) => {
-        const ret = reverseList2(item.arg);
+        const ret = removeNthFromEnd(item.arg1, item.arg2);
+        assert.deepStrictEqual(traversalList(ret), item.ret);
+      });
+    });
+    it("哨兵+快慢指针", function () {
+      cases.forEach((item) => {
+        const ret = removeNthFromEnd2(item.arg1, item.arg2);
         assert.deepStrictEqual(traversalList(ret), item.ret);
       });
     });

@@ -43,3 +43,15 @@ export function traversalList<T>(list: List<T>): T[] {
   }
   return arr;
 }
+
+/** 使用哨兵遍历链表 */
+export function traversalListBySentry<T>(list: List<T>): T[] {
+  const arr: T[] = [];
+  const sentry = new ListNode<T>(0 as any, list);
+  let curr = sentry;
+  while (curr.next !== null) {
+    arr.push(curr.next.val);
+    curr = curr.next;
+  }
+  return arr;
+}
