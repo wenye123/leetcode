@@ -4,9 +4,7 @@
 
 import { List, ListNode } from "../../base/List";
 
-/**
- * 头插法
- */
+/** 头插法 */
 export function reverseList(head: List<number>): List<number> {
   if (head === null || head.next === null) return head;
   let sentry = new ListNode(0); // 新的链表

@@ -9,6 +9,7 @@ import {
   removeElementsBySentry,
 } from "../../src/leetcode/数据结构-链表/203.移除链表元素";
 import { reverseList } from "../../src/leetcode/数据结构-链表/206. 反转链表";
+import { mergeTwoLists, mergeTwoLists2 } from "../../src/leetcode/数据结构-链表/22.合并有序链表";
 
 describe("链表", function () {
   describe("203.移除链表元素", function () {
@@ -134,7 +135,7 @@ describe("链表", function () {
     this.beforeEach(() => {
       cases = CASES();
     });
-    it("尾插法+额外数组", function () {
+    it("哨兵+额外数组", function () {
       cases.forEach((item) => {
         const ret = removeNthFromEnd(item.arg1, item.arg2);
         assert.deepStrictEqual(traversalList(ret), item.ret);
@@ -143,6 +144,31 @@ describe("链表", function () {
     it("哨兵+快慢指针", function () {
       cases.forEach((item) => {
         const ret = removeNthFromEnd2(item.arg1, item.arg2);
+        assert.deepStrictEqual(traversalList(ret), item.ret);
+      });
+    });
+  });
+  describe("22.合并有序链表", function () {
+    const CASES = () => [
+      {
+        arg1: createListTail([-9, 3]),
+        arg2: createListTail([5, 7]),
+        ret: [-9, 3, 5, 7],
+      },
+    ];
+    let cases = CASES();
+    this.beforeEach(() => {
+      cases = CASES();
+    });
+    it("双指针+尾插法", function () {
+      cases.forEach((item) => {
+        const ret = mergeTwoLists(item.arg1, item.arg2);
+        assert.deepStrictEqual(traversalList(ret), item.ret);
+      });
+    });
+    it("递归", function () {
+      cases.forEach((item) => {
+        const ret = mergeTwoLists2(item.arg1, item.arg2);
         assert.deepStrictEqual(traversalList(ret), item.ret);
       });
     });

@@ -5,29 +5,21 @@
 import { List, ListNode } from "../../base/List";
 
 /**
- * 尾插法+额外数组
+ * 哨兵+额外数组
  * 时间复杂度O(n) 空间复杂度O(n)
  */
 export function removeNthFromEnd(head: List<number>, n: number): List<number> {
   // 定义哨兵&数组存储节点
   const sentry = new ListNode(0, head);
   const nodes: ListNode<number>[] = [sentry];
-
-  let curr = head,
-    currSentry = sentry;
+  // 循环添加节点
+  let curr = head;
   while (curr !== null) {
-    // 保存原始链表的后续
-    const next = curr.next;
-    // 尾插法&节点存进数组
-    curr.next = null;
-    currSentry.next = curr;
-    currSentry = currSentry.next;
     nodes.push(curr);
-    // 将后续链表赋值给curr 循环继续
-    curr = next;
+    curr = curr.next;
   }
   // 删除指定节点
-  nodes[nodes.length - n - 1].next = nodes[nodes.length - n].next;
+  nodes[nodes.length - 1 - n].next = nodes[nodes.length - n].next;
   // 返回新的链表
   return sentry.next;
 }

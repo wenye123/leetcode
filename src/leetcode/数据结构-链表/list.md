@@ -6,7 +6,7 @@
     curr = curr.next;
   }
 
-- 哨兵: 减少head条件判断&删除节点&让代码更加容易理解
+- 哨兵: 删除节点&构建新的链表(让代码更加容易理解)
   const sentry = new ListNode(0, head);
   let curr = sentry;
   while (curr.next !== null) {
@@ -20,23 +20,19 @@
     let currSentry = sentry; // 尾插法时候使用
     let curr = head;
     while (curr !== null) {
-      /** 保存原先链表的后续 **/
+      /** 头插法: 会破坏原链表 **/
+      // 保存原先链表的后续
       const next = curr.next;
-
-      /**
-       * 对curr节点进行操作 注意以下操作会破坏原先链表 如果不想破坏就新建一个节点: const node = new ListNode(curr.val)
-       * **/
-      // doSomething(curr);
-      // 头插法
+      // 头插curr节点 注意以下操作会破坏原先链表 如果不想破坏就新建一个节点: const node = new ListNode(curr.val)
       curr.next = sentry.next;
       sentry.next = curr;
-      // 尾插法
-      curr.next = null;
+      // 将后续链表赋值给curr 循环继续
+      curr = next;
+
+      /** 尾插法: 不会影响原链表 **/
       currSentry.next = curr;
       currSentry = currSentry.next;
-
-      /** 将后续链表赋值给curr 循环继续 **/
-      curr = next;
+      curr = curr.next;
     }
     return sentry.next;
 
