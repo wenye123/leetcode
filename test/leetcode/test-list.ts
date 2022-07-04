@@ -10,6 +10,7 @@ import {
 } from "../../src/leetcode/数据结构-链表/203.移除链表元素";
 import { reverseList } from "../../src/leetcode/数据结构-链表/206. 反转链表";
 import { mergeTwoLists, mergeTwoLists2 } from "../../src/leetcode/数据结构-链表/22.合并有序链表";
+import { middleNode } from "../../src/leetcode/数据结构-链表/876. 链表的中间结点";
 
 describe("链表", function () {
   describe("203.移除链表元素", function () {
@@ -132,7 +133,7 @@ describe("链表", function () {
       },
     ];
     let cases = CASES();
-    this.beforeEach(() => {
+    beforeEach(() => {
       cases = CASES();
     });
     it("哨兵+额外数组", function () {
@@ -169,6 +170,26 @@ describe("链表", function () {
     it("递归", function () {
       cases.forEach((item) => {
         const ret = mergeTwoLists2(item.arg1, item.arg2);
+        assert.deepStrictEqual(traversalList(ret), item.ret);
+      });
+    });
+  });
+  describe("876. 链表的中间结点", function () {
+    const CASES = () => [
+      {
+        arg: createListTail([1, 2, 3, 4, 5]),
+        ret: [3, 4, 5],
+      },
+      {
+        arg: createListTail([1, 2, 3, 4, 5, 6]),
+        ret: [4, 5, 6],
+      },
+    ];
+    let cases = CASES();
+    beforeEach(() => (cases = CASES()));
+    it("快慢指针", function () {
+      cases.forEach((item) => {
+        const ret = middleNode(item.arg);
         assert.deepStrictEqual(traversalList(ret), item.ret);
       });
     });
