@@ -2,12 +2,12 @@
  * https://leetcode.cn/problems/linked-list-cycle/
  */
 
-import { ListNode } from "../../base/List";
+import { List } from "../../base/List";
 
 /**
  * 使用哈希: 时间和空间复杂度都是O(n)
  */
-export function hasCycle(head: ListNode<number>): boolean {
+export function hasCycle(head: List<number>): boolean {
   const set = new Set();
   let curr = head;
   while (curr !== null) {
@@ -22,7 +22,7 @@ export function hasCycle(head: ListNode<number>): boolean {
  * 快慢指针
  *   龟兔赛跑 乌龟一次跑异步 兔子一次跑两步 只要有环形 那就一定会相遇
  */
-export function hasCycle2(head: ListNode<number>): boolean {
+export function hasCycle2(head: List<number>): boolean {
   let slow = head;
   let fast = head;
   while (fast !== null && fast.next !== null) {

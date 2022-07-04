@@ -1,5 +1,5 @@
 import { assert } from "chai";
-import { createListTail, traversalList } from "../../src/base/List";
+import { createListHead, createListTail, traversalList } from "../../src/base/List";
 import { hasCycle } from "../../src/leetcode/数据结构-链表/141.环形链表";
 import { LRUCache } from "../../src/leetcode/数据结构-链表/146.LRU缓存";
 import {
@@ -7,6 +7,7 @@ import {
   removeElementsByRecursive,
   removeElementsBySentry,
 } from "../../src/leetcode/数据结构-链表/203.移除链表元素";
+import { reverseList, reverseList2 } from "../../src/leetcode/数据结构-链表/206. 反转链表";
 
 describe("链表", function () {
   describe("203.移除链表元素", function () {
@@ -94,6 +95,31 @@ describe("链表", function () {
         arr.push(key);
       });
       assert.deepStrictEqual(arr, [1, 3]);
+    });
+  });
+  describe("206. 反转链表", function () {
+    const cases = [
+      {
+        arg: createListTail([1, 2, 3, 4, 5]),
+        ret: [5, 4, 3, 2, 1],
+      },
+      {
+        arg: createListHead([]),
+        ret: [],
+      },
+    ];
+
+    it("哨兵+头插法+新建节点", function () {
+      cases.forEach((item) => {
+        const ret = reverseList(item.arg);
+        assert.deepStrictEqual(traversalList(ret), item.ret);
+      });
+    });
+    it("哨兵+头插法+利用已有节点", function () {
+      cases.forEach((item) => {
+        const ret = reverseList2(item.arg);
+        assert.deepStrictEqual(traversalList(ret), item.ret);
+      });
     });
   });
 });
