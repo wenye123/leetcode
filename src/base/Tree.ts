@@ -10,7 +10,7 @@
  */
 
 /** 树节点 */
-export class TreeNode<T> {
+export class TreeNode<T = number> {
   val: T;
   left: Tree<T>;
   right: Tree<T>;
@@ -21,7 +21,7 @@ export class TreeNode<T> {
     this.right = right ? right : null;
   }
 }
-export type Tree<T> = TreeNode<T> | null;
+export type Tree<T = number> = TreeNode<T> | null;
 export type TraversalType = "prev" | "middle" | "after";
 
 /**

@@ -1,8 +1,9 @@
 import assert from "assert";
 import { createTree } from "../../src/base/Tree";
-import { maxDepth, maxDepthByRecursive } from "../../src/leetcode/数据结构-树/104. 二叉树的最大深度";
+import { isSameTree } from "../../src/leetcode/数据结构-树/100.相同的树";
+import { maxDepth, maxDepthByRecursive } from "../../src/leetcode/数据结构-树/104.二叉树的最大深度";
 import { invertTree, invertTreeByRecursive } from "../../src/leetcode/数据结构-树/226. 翻转二叉树";
-import { inorderTraversal, inorderTraversal2 } from "../../src/leetcode/数据结构-树/94. 二叉树的中序遍历";
+import { inorderTraversal, inorderTraversal2 } from "../../src/leetcode/数据结构-树/94.二叉树的中序遍历";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -30,7 +31,7 @@ describe("树", function () {
       });
     });
   });
-  describe("226. 翻转二叉树", function () {
+  describe("226.翻转二叉树", function () {
     const EXAMPLES = () => [
       {
         arg: createTree([]),
@@ -59,7 +60,7 @@ describe("树", function () {
       });
     });
   });
-  describe("94. 二叉树的中序遍历", function () {
+  describe("94.二叉树的中序遍历", function () {
     const EXAMPLES = () => [
       {
         arg: createTree([1, null, 2, 3]),
@@ -84,6 +85,36 @@ describe("树", function () {
     it("循环", function () {
       examples.forEach((example) => {
         const ret = inorderTraversal2(example.arg);
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("100.相同的树", function () {
+    const EXAMPLES = () => [
+      {
+        arg1: createTree([1, 2, 3]),
+        arg2: createTree([1, 2, 3]),
+        ret: true,
+      },
+      {
+        arg1: createTree([1, 2]),
+        arg2: createTree([1, null, 2]),
+        ret: false,
+      },
+      {
+        arg1: createTree([1, 2, 1]),
+        arg2: createTree([1, 1, 2]),
+        ret: false,
+      },
+    ];
+    let examples = EXAMPLES();
+    beforeEach(() => {
+      examples = EXAMPLES();
+    });
+
+    it("深度优先遍历-递归", function () {
+      examples.forEach((example) => {
+        const ret = isSameTree(example.arg1, example.arg2);
         assert.deepStrictEqual(ret, example.ret);
       });
     });

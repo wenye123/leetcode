@@ -1,4 +1,4 @@
-export class ListNode<T> {
+export class ListNode<T = number> {
   val: T;
   next: List<T>;
   constructor(val: T, next?: List<T>) {
@@ -6,7 +6,7 @@ export class ListNode<T> {
     this.next = next || null;
   }
 }
-export type List<T> = ListNode<T> | null;
+export type List<T = number> = ListNode<T> | null;
 
 /** 创建链表 头插法 [1,2,3,4] => [1,4,3,2] */
 export function createListHead<T>(arr: T[]) {
