@@ -1,11 +1,12 @@
 import assert from "assert";
-import { createTree } from "../../src/base/Tree";
+import { createTree, dfsTree } from "../../src/base/Tree";
 import { isSameTree } from "../../src/leetcode/数据结构-树/100.相同的树";
 import { isSymmetric } from "../../src/leetcode/数据结构-树/101.对称二叉树";
 import { maxDepth, maxDepthByRecursive } from "../../src/leetcode/数据结构-树/104.二叉树的最大深度";
 import { minDepth } from "../../src/leetcode/数据结构-树/111.二叉树的最小深度";
 import { invertTree, invertTreeByRecursive } from "../../src/leetcode/数据结构-树/226. 翻转二叉树";
 import { inorderTraversal, inorderTraversal2 } from "../../src/leetcode/数据结构-树/94.二叉树的中序遍历";
+import { flatten } from "../../src/leetcode/数据结构-树/114.二叉树展开为链表";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -177,6 +178,24 @@ describe("树", function () {
       examples.forEach((example) => {
         const ret = minDepth(example.arg1);
         assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("114.二叉树展开为链表", function () {
+    let examples = [
+      {
+        arg1: createTree([1, 2, 5, 3, 4, null, 6]),
+        ret: dfsTree(createTree([1, null, 2, null, 3, null, 4, null, 5, null, 6]), "prev"),
+      },
+      {
+        arg1: createTree([]),
+        ret: dfsTree(createTree([]), "prev"),
+      },
+    ];
+    it("深度优先遍历", function () {
+      examples.forEach((example) => {
+        flatten(example.arg1)!;
+        assert.deepStrictEqual(dfsTree(example.arg1, "prev"), example.ret);
       });
     });
   });
