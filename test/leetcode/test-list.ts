@@ -1,6 +1,7 @@
 import { assert } from "chai";
 import { createListHead, createListTail, traversalList } from "../../src/base/List";
 import { hasCycle } from "../../src/leetcode/数据结构-链表/141.环形链表";
+import { detectCycle, detectCycle2 } from "../../src/leetcode/数据结构-链表/142.环形链表 II";
 import { LRUCache } from "../../src/leetcode/数据结构-链表/146.LRU缓存";
 import { removeNthFromEnd, removeNthFromEnd2 } from "../../src/leetcode/数据结构-链表/19.删除链表的倒数第 N 个结点";
 import {
@@ -237,6 +238,47 @@ describe("链表", function () {
       cases.forEach((item) => {
         const ret = reverseBetween(item.arg1, item.arg2, item.arg3);
         assert.deepStrictEqual(traversalList(ret), item.ret);
+      });
+    });
+  });
+  describe("142.环形链表 II", function () {
+    const EXAMPLE = () => [
+      {
+        arg1: (() => {
+          const list = createListTail([3, 2, 0, 4]) as any;
+          list.next.next.next = list?.next;
+          return list;
+        })(),
+        ret: 2,
+      },
+      {
+        arg1: (() => {
+          const list = createListTail([1, 2]) as any;
+          list.next.next = list;
+          return list;
+        })(),
+        ret: 1,
+      },
+      {
+        arg1: createListTail([1]),
+        ret: null,
+      },
+    ];
+    let examples = EXAMPLE();
+    beforeEach(() => {
+      examples = EXAMPLE();
+    });
+
+    it("使用哈希", function () {
+      examples.forEach((example) => {
+        const ret = detectCycle(example.arg1);
+        assert.deepStrictEqual(ret && ret.val, example.ret);
+      });
+    });
+    it("快慢指针", function () {
+      examples.forEach((example) => {
+        const ret = detectCycle2(example.arg1);
+        assert.deepStrictEqual(ret && ret.val, example.ret);
       });
     });
   });
