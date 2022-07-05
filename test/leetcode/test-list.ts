@@ -104,7 +104,7 @@ describe("链表", function () {
     });
   });
   describe("206.反转链表", function () {
-    const cases = [
+    const CASES = () => [
       {
         arg: createListTail([1, 2, 3, 4, 5]),
         ret: [5, 4, 3, 2, 1],
@@ -114,7 +114,8 @@ describe("链表", function () {
         ret: [],
       },
     ];
-
+    let cases = CASES();
+    beforeEach(() => (cases = CASES()));
     it("头插法", function () {
       cases.forEach((item) => {
         const ret = reverseList(item.arg);

@@ -8,7 +8,7 @@ export class ListNode<T> {
 }
 export type List<T> = ListNode<T> | null;
 
-/** 创建链表 头插法 [1,2,3,4] => 1432 */
+/** 创建链表 头插法 [1,2,3,4] => [1,4,3,2] */
 export function createListHead<T>(arr: T[]) {
   if (arr.length === 0) return null;
   const head = new ListNode(arr[0]);
@@ -20,7 +20,7 @@ export function createListHead<T>(arr: T[]) {
   return head;
 }
 
-/** 创建链表 尾插法 [1,2,3,4] => 1234 */
+/** 创建链表 尾插法 [1,2,3,4] => [1,2,3,4] */
 export function createListTail<T>(arr: T[]) {
   if (arr.length === 0) return null;
   const head = new ListNode(arr[0]);
