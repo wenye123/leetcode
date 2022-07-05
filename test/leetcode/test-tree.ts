@@ -3,6 +3,7 @@ import { createTree } from "../../src/base/Tree";
 import { isSameTree } from "../../src/leetcode/数据结构-树/100.相同的树";
 import { isSymmetric } from "../../src/leetcode/数据结构-树/101.对称二叉树";
 import { maxDepth, maxDepthByRecursive } from "../../src/leetcode/数据结构-树/104.二叉树的最大深度";
+import { minDepth } from "../../src/leetcode/数据结构-树/111.二叉树的最小深度";
 import { invertTree, invertTreeByRecursive } from "../../src/leetcode/数据结构-树/226. 翻转二叉树";
 import { inorderTraversal, inorderTraversal2 } from "../../src/leetcode/数据结构-树/94.二叉树的中序遍历";
 
@@ -139,6 +140,42 @@ describe("树", function () {
     it("深度优先遍历-递归", function () {
       examples.forEach((example) => {
         const ret = isSymmetric(example.arg1);
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("111.二叉树的最小深度", function () {
+    let examples = [
+      {
+        arg1: createTree([3, 9, 20, null, null, 15, 7]),
+        ret: 2,
+      },
+      {
+        arg1: createTree([2, null, 3, null, 4, null, 5, null, 6]),
+        ret: 5,
+      },
+    ];
+    it("深度优先遍历-递归", function () {
+      examples.forEach((example) => {
+        const ret = minDepth(example.arg1);
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+    it("深度优先遍历-循环", function () {
+      examples.forEach((example) => {
+        const ret = minDepth(example.arg1);
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+    it("广度优先遍历-循环", function () {
+      examples.forEach((example) => {
+        const ret = minDepth(example.arg1);
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+    it("广度优先遍历-递归", function () {
+      examples.forEach((example) => {
+        const ret = minDepth(example.arg1);
         assert.deepStrictEqual(ret, example.ret);
       });
     });
