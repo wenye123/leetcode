@@ -1,13 +1,13 @@
 import { assert } from "chai";
 import { twoSum, twoSumWithMap } from "../../src/leetcode/基本-数组/1.两数之和";
 import { threeSum } from "../../src/leetcode/基本-数组/15.三数之和";
-import { twoSum2 } from "../../src/leetcode/基本-数组/167. 两数之和2";
-import { minSubArrayLen, minSubArrayLen2 } from "../../src/leetcode/基本-数组/209. 长度最小的子数组";
+import { twoSum2 } from "../../src/leetcode/基本-数组/167.两数之和2";
+import { minSubArrayLen, minSubArrayLen2 } from "../../src/leetcode/基本-数组/209.长度最小的子数组";
 import { removeDuplicates } from "../../src/leetcode/基本-数组/26.删除排序数组中的重复项";
 import { removeElement } from "../../src/leetcode/基本-数组/27.移除元素";
 import { moveZeroes } from "../../src/leetcode/基本-数组/283.移动零";
-import { reverseString } from "../../src/leetcode/基本-数组/344. 反转字符串";
-import { sortedSquares } from "../../src/leetcode/基本-数组/977. 有序数组的平方";
+import { reverseString } from "../../src/leetcode/基本-数组/344.反转字符串";
+import { sortedSquares } from "../../src/leetcode/基本-数组/977.有序数组的平方";
 
 describe("数组", function () {
   describe("1.两数之和", function () {
@@ -81,7 +81,7 @@ describe("数组", function () {
       });
     });
   });
-  describe("167. 两数之和2", function () {
+  describe("167.两数之和2", function () {
     const cases = [
       {
         arg1: [2, 7, 11, 15],
@@ -101,7 +101,7 @@ describe("数组", function () {
       });
     });
   });
-  describe("977. 有序数组的平方", function () {
+  describe("977.有序数组的平方", function () {
     const cases = [
       {
         arg: [-4, -1, 0, 3, 10],
@@ -119,7 +119,7 @@ describe("数组", function () {
       });
     });
   });
-  describe("209. 长度最小的子数组", function () {
+  describe("209.长度最小的子数组", function () {
     const cases = [
       {
         arg1: 7,
@@ -150,7 +150,7 @@ describe("数组", function () {
       });
     });
   });
-  describe("344. 反转字符串", function () {
+  describe("344.反转字符串", function () {
     const cases = [
       {
         arg: ["h", "e", "l", "l", "o"],
