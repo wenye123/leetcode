@@ -1,6 +1,7 @@
 import assert from "assert";
 import { createTree } from "../../src/base/Tree";
 import { isSameTree } from "../../src/leetcode/数据结构-树/100.相同的树";
+import { isSymmetric } from "../../src/leetcode/数据结构-树/101.对称二叉树";
 import { maxDepth, maxDepthByRecursive } from "../../src/leetcode/数据结构-树/104.二叉树的最大深度";
 import { invertTree, invertTreeByRecursive } from "../../src/leetcode/数据结构-树/226. 翻转二叉树";
 import { inorderTraversal, inorderTraversal2 } from "../../src/leetcode/数据结构-树/94.二叉树的中序遍历";
@@ -115,6 +116,29 @@ describe("树", function () {
     it("深度优先遍历-递归", function () {
       examples.forEach((example) => {
         const ret = isSameTree(example.arg1, example.arg2);
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("101.对称二叉树", function () {
+    const EXAMPLES = () => [
+      {
+        arg1: createTree([1, 2, 2, 3, 4, 4, 3]),
+        ret: true,
+      },
+      {
+        arg1: createTree([1, 2, 2, null, 3, null, 3]),
+        ret: false,
+      },
+    ];
+    let examples = EXAMPLES();
+    beforeEach(() => {
+      examples = EXAMPLES();
+    });
+
+    it("深度优先遍历-递归", function () {
+      examples.forEach((example) => {
+        const ret = isSymmetric(example.arg1);
         assert.deepStrictEqual(ret, example.ret);
       });
     });
