@@ -3,6 +3,7 @@ import { createListHead, createListTail, traversalList } from "../../src/base/Li
 import { hasCycle } from "../../src/leetcode/数据结构-链表/141.环形链表";
 import { detectCycle, detectCycle2 } from "../../src/leetcode/数据结构-链表/142.环形链表 II";
 import { LRUCache } from "../../src/leetcode/数据结构-链表/146.LRU缓存";
+import { getIntersectionNode, getIntersectionNode2 } from "../../src/leetcode/数据结构-链表/160.相交链表";
 import { removeNthFromEnd, removeNthFromEnd2 } from "../../src/leetcode/数据结构-链表/19.删除链表的倒数第 N 个结点";
 import {
   removeElements,
@@ -279,6 +280,46 @@ describe("链表", function () {
     it("快慢指针", function () {
       examples.forEach((example) => {
         const ret = detectCycle2(example.arg1);
+        assert.deepStrictEqual(ret && ret.val, example.ret);
+      });
+    });
+  });
+  describe("160.相交链表", function () {
+    const EXAMPLE = () => {
+      const list1 = createListTail([1, 2, 4]);
+      const list2 = createListTail([3]);
+      list2!.next = list1!.next;
+
+      const list3 = createListTail([1, 2, 3]);
+      const list4 = createListTail([4, 5]);
+
+      return [
+        {
+          arg1: list1,
+          arg2: list2,
+          ret: 2,
+        },
+        {
+          arg1: list3,
+          arg2: list4,
+          ret: null,
+        },
+      ];
+    };
+    let examples = EXAMPLE();
+    beforeEach(() => {
+      examples = EXAMPLE();
+    });
+
+    it("使用哈希", function () {
+      examples.forEach((example) => {
+        const ret = getIntersectionNode(example.arg1, example.arg2);
+        assert.deepStrictEqual(ret && ret.val, example.ret);
+      });
+    });
+    it("双指针", function () {
+      examples.forEach((example) => {
+        const ret = getIntersectionNode2(example.arg1, example.arg2);
         assert.deepStrictEqual(ret && ret.val, example.ret);
       });
     });
