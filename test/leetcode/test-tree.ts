@@ -7,6 +7,7 @@ import { minDepth } from "../../src/leetcode/数据结构-树/111.二叉树的�
 import { invertTree, invertTreeByRecursive } from "../../src/leetcode/数据结构-树/226. 翻转二叉树";
 import { inorderTraversal, inorderTraversal2 } from "../../src/leetcode/数据结构-树/94.二叉树的中序遍历";
 import { flatten } from "../../src/leetcode/数据结构-树/114.二叉树展开为链表";
+import { mergeTrees } from "../../src/leetcode/数据结构-树/617.合并二叉树";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -195,6 +196,28 @@ describe("树", function () {
     it("深度优先遍历", function () {
       examples.forEach((example) => {
         flatten(example.arg1)!;
+        assert.deepStrictEqual(dfsTree(example.arg1, "prev"), example.ret);
+      });
+    });
+  });
+  describe("617.合并二叉树", function () {
+    const EXAMPLES = () => [
+      {
+        arg1: createTree([1, 3, 2, 5]),
+        arg2: createTree([2, 1, 3, null, 4, null, 7]),
+        ret: dfsTree(createTree([3, 4, 5, 5, 4, null, 7]), "prev"),
+      },
+      {
+        arg1: createTree([1]),
+        arg2: createTree([1, 2]),
+        ret: dfsTree(createTree([2, 2]), "prev"),
+      },
+    ];
+    let examples = EXAMPLES();
+    beforeEach(() => (examples = EXAMPLES()));
+    it("深度优先遍历-递归", function () {
+      examples.forEach((example) => {
+        mergeTrees(example.arg1, example.arg2)!;
         assert.deepStrictEqual(dfsTree(example.arg1, "prev"), example.ret);
       });
     });
