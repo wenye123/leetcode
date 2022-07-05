@@ -12,6 +12,7 @@ import { reverseList } from "../../src/leetcode/数据结构-链表/206. 反转�
 import { mergeTwoLists, mergeTwoLists2 } from "../../src/leetcode/数据结构-链表/22.合并有序链表";
 import { isPalindrome } from "../../src/leetcode/数据结构-链表/234.回文链表";
 import { middleNode } from "../../src/leetcode/数据结构-链表/876. 链表的中间结点";
+import { reverseBetween } from "../../src/leetcode/数据结构-链表/92.反转链表 II";
 
 describe("链表", function () {
   describe("203.移除链表元素", function () {
@@ -212,6 +213,30 @@ describe("链表", function () {
       cases.forEach((item) => {
         const ret = isPalindrome(item.arg);
         assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("92.反转链表 II", function () {
+    const CASES = () => [
+      {
+        arg1: createListTail([1, 2, 3, 4, 5]),
+        arg2: 2,
+        arg3: 4,
+        ret: [1, 4, 3, 2, 5],
+      },
+      {
+        arg1: createListTail([5]),
+        arg2: 2,
+        arg3: 4,
+        ret: [5],
+      },
+    ];
+    let cases = CASES();
+    beforeEach(() => (cases = CASES()));
+    it("头插法", function () {
+      cases.forEach((item) => {
+        const ret = reverseBetween(item.arg1, item.arg2, item.arg3);
+        assert.deepStrictEqual(traversalList(ret), item.ret);
       });
     });
   });
