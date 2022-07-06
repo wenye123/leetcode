@@ -8,6 +8,7 @@ import { invertTree, invertTreeByRecursive } from "../../src/leetcode/数据结�
 import { inorderTraversal, inorderTraversal2 } from "../../src/leetcode/数据结构-树/94.二叉树的中序遍历";
 import { flatten } from "../../src/leetcode/数据结构-树/114.二叉树展开为链表";
 import { mergeTrees } from "../../src/leetcode/数据结构-树/617.合并二叉树";
+import { lowestCommonAncestor } from "../../src/leetcode/数据结构-树/236.二叉树的最近公共祖先";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -219,6 +220,27 @@ describe("树", function () {
       examples.forEach((example) => {
         mergeTrees(example.arg1, example.arg2)!;
         assert.deepStrictEqual(dfsTree(example.arg1, "prev"), example.ret);
+      });
+    });
+  });
+  describe("236.二叉树的最近公共祖先", function () {
+    const EXAMPLES = () => {
+      const item1 = () => {
+        const arg1 = createTree([3, 5, 1, 6, 2, 0, 8, null, null, 7, 4]);
+        const arg2 = arg1!.left!;
+        const arg3 = arg1!.left!.right!.right!;
+        const ret = arg2;
+        return { arg1, arg2, arg3, ret };
+      };
+      return [item1()];
+    };
+    let examples = EXAMPLES();
+    beforeEach(() => (examples = EXAMPLES()));
+
+    it("递归", function () {
+      examples.forEach((example) => {
+        const ret = lowestCommonAncestor(example.arg1, example.arg2, example.arg3)!;
+        assert.deepStrictEqual(ret, example.ret);
       });
     });
   });

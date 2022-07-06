@@ -84,7 +84,28 @@ export function dfsTreeByRecursive<T>(root: Tree<T>, type: TraversalType): T[] {
   }
 }
 
-/** 深度优先遍历-非递归栈实现 */
+/**
+ * 深度优先遍历-非递归前序遍历简单版
+ */
+export function dfsPrevTree<T>(root: Tree<T>) {
+  if (root === null) return [];
+  const arr: T[] = [];
+  const stack: TreeNode<T>[] = [root];
+  while (stack.length > 0) {
+    const node = stack.pop()!;
+    // 这行代码无论写在这个循环的哪里都是前序遍历
+    arr.push(node.val);
+    // 这里记得注意顺序 除非但有些题目不在乎是不是前序遍历 只是想要遍历完整个树的话
+    if (node.right) stack.push(node.right);
+    if (node.left) stack.push(node.left);
+  }
+  return arr;
+}
+
+/**
+ * 深度优先遍历-非递归实现
+ *  三种遍历方式全实现
+ */
 interface StackItem<T> {
   color: "white" | "gray";
   node: TreeNode<T>;

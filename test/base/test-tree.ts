@@ -10,6 +10,7 @@ import {
   dfSearchTree,
   bsSearchTreeByRecursive,
   bfSearchTree,
+  dfsPrevTree,
 } from "../../src/base/Tree";
 
 describe("基础", function () {
@@ -107,6 +108,10 @@ describe("基础", function () {
     it("深度优先遍历-递归-后序遍历", function () {
       const arr = dfsTreeByRecursive(tree, "after");
       assert.deepStrictEqual(arr, after);
+    });
+    it("深度优先遍历-非递归前序遍历简单版", function () {
+      const arr = dfsPrevTree(tree);
+      assert.deepStrictEqual(arr, prev);
     });
     it("深度优先遍历-非递归栈实现-前序遍历", function () {
       const arr = dfsTree(tree, "prev");
