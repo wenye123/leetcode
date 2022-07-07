@@ -10,6 +10,7 @@ import { flatten } from "../../src/leetcode/数据结构-树/114.二叉树展开
 import { mergeTrees } from "../../src/leetcode/数据结构-树/617.合并二叉树";
 import { lowestCommonAncestor } from "../../src/leetcode/数据结构-树/236.二叉树的最近公共祖先";
 import { diameterOfBinaryTree } from "../../src/leetcode/数据结构-树/543.二叉树的直径";
+import { isSubtree } from "../../src/leetcode/数据结构-树/572.另一棵树的子树";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -258,6 +259,30 @@ describe("树", function () {
     it("递归", function () {
       examples.forEach((example) => {
         const ret = diameterOfBinaryTree(example.arg1)!;
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("572.另一棵树的子树", function () {
+    const EXAMPLES = () => {
+      const tree1 = createTree([1, 2, 3, null, null, 4, 5]);
+      return [
+        {
+          arg1: tree1,
+          arg2: tree1!.left!,
+          ret: true,
+        },
+        {
+          arg1: createTree([3, 4, 5, 1, 2, null, null, null, null, 0]),
+          arg2: createTree([4, 1, 2]),
+          ret: false,
+        },
+      ];
+    };
+    let examples = EXAMPLES();
+    it("递归", function () {
+      examples.forEach((example) => {
+        const ret = isSubtree(example.arg1, example.arg2);
         assert.deepStrictEqual(ret, example.ret);
       });
     });
