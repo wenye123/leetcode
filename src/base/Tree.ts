@@ -224,3 +224,29 @@ export function bfSearchTree<T>(root: Tree<T>, target: T) {
   }
   return false;
 }
+
+/**
+ *  深度优先遍历-获取所有路径
+ *   深度优先遍历自带回溯, 天生会通过回流遍历完所有路径
+ *
+ *   终止条件就是遍历到什么时候停止 开始回溯 并返回值
+ *   父子节点数据流
+ *     递归函数的参数就是父节点给子节点传值 通过记录父节点 能获取到整条路径
+ *     递归函数的返回结果就是子节点向父节点传值
+ */
+export function getTreePaths(root: TreeNode | null): number[][] {
+  let paths: number[][] = [];
+  function getPathByDfs(tree: TreeNode | null, arr: number[]) {
+    // 终止条件
+    if (tree === null) return null;
+    // 递归
+    const left = getPathByDfs(tree.left, [...arr, tree.val]);
+    const right = getPathByDfs(tree.right, [...arr, tree.val]);
+    // 返回结果
+    if (left === null && right === null) {
+      paths.push([...arr, tree.val]);
+    }
+  }
+  getPathByDfs(root, []);
+  return paths;
+}

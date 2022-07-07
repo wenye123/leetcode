@@ -11,6 +11,7 @@ import {
   bsSearchTreeByRecursive,
   bfSearchTree,
   dfsPrevTree,
+  getTreePaths,
 } from "../../src/base/Tree";
 
 describe("基础", function () {
@@ -90,6 +91,16 @@ describe("基础", function () {
       { arg1: tree, arg2: "e", ret: true },
       { arg1: tree, arg2: "g", ret: false },
     ];
+    const pathCases = [
+      {
+        arg1: createTree([1, 2, 3, null, 5]),
+        ret: [
+          [1, 2, 5],
+          [1, 3],
+        ],
+      },
+      { arg1: createTree([1]), ret: [[1]] },
+    ];
 
     it("生成树", function () {
       cases.forEach((item) => {
@@ -154,6 +165,12 @@ describe("基础", function () {
     it("广度优先搜索-非递归", function () {
       searchCase.forEach((item) => {
         const ret = bfSearchTree(item.arg1, item.arg2);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+    it("深度优先遍历-获取所有路径", function () {
+      pathCases.forEach((item) => {
+        const ret = getTreePaths(item.arg1 as any);
         assert.deepStrictEqual(ret, item.ret);
       });
     });
