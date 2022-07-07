@@ -35,5 +35,8 @@ export function maxDepthByRecursive<T>(root: Tree<T>): number {
   // 终止条件
   if (root === null) return 0;
   // 判断左右子树的深度
-  return Math.max(maxDepthByRecursive(root.left), maxDepthByRecursive(root.right)) + 1;
+  // return Math.max(maxDepthByRecursive(root.left), maxDepthByRecursive(root.right)) + 1;
+  const left = maxDepthByRecursive(root.left) + 1;
+  const right = maxDepthByRecursive(root.right) + 1;
+  return Math.max(left, right);
 }
