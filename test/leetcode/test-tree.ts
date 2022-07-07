@@ -12,6 +12,7 @@ import { lowestCommonAncestor } from "../../src/leetcode/数据结构-树/236.�
 import { diameterOfBinaryTree } from "../../src/leetcode/数据结构-树/543.二叉树的直径";
 import { isSubtree } from "../../src/leetcode/数据结构-树/572.另一棵树的子树";
 import { isBalanced } from "../../src/leetcode/数据结构-树/110.平衡二叉树";
+import { countNodes } from "../../src/leetcode/数据结构-树/222.完全二叉树的节点个数";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -296,6 +297,18 @@ describe("树", function () {
     it("递归", function () {
       examples.forEach((example) => {
         const ret = isBalanced(example.arg1);
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("222.完全二叉树的节点个数", function () {
+    let examples = [
+      { arg1: createTree([1, 2, 3, 4, 5, 6]), ret: 6 },
+      { arg1: createTree([]), ret: 0 },
+    ];
+    it("递归", function () {
+      examples.forEach((example) => {
+        const ret = countNodes(example.arg1);
         assert.deepStrictEqual(ret, example.ret);
       });
     });

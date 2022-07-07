@@ -28,15 +28,13 @@ export function isBalanced(root: TreeNode | null): boolean {
     // 终止条件
     if (root === null) return 0;
     // 递归
-    const leftRet = dfs(root.left);
-    if (leftRet == -1) return -1;
-    const leftDepth = leftRet + 1;
-    const rightRet = dfs(root.right);
-    if (rightRet === -1) return -1;
-    const rightDepth = rightRet + 1;
+    const leftDepth = dfs(root.left);
+    if (leftDepth == -1) return -1;
+    const rightDepth = dfs(root.right);
+    if (rightDepth === -1) return -1;
     // 返回结果
     if (Math.abs(leftDepth - rightDepth) > 1) return -1; // 高度差超过1则返回-1
-    return Math.max(leftDepth, rightDepth); // 否则返回左右子树深度的最大值
+    return Math.max(leftDepth, rightDepth) + 1; // 否则返回左右子树深度的最大值
   }
   return dfs(root) === -1 ? false : true;
 }
