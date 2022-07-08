@@ -70,6 +70,8 @@ export function createTree<T>(arr: T[]) {
   return root;
 }
 
+/********************************遍历&搜索**************************************** */
+
 /** 深度优先遍历-递归 */
 export function dfsTreeByRecursive<T>(root: Tree<T>, type: TraversalType): T[] {
   if (root === null) return [];
@@ -163,6 +165,27 @@ export function bfsTree<T>(root: Tree<T>) {
     if (node.right) queue.push(node.right);
   }
   return result;
+}
+
+/**
+ * 广度优先遍历-非递归2: 每层数据组合成一个数组
+ */
+export function bfsTree2<T>(root: TreeNode<T> | null): T[][] {
+  if (root === null) return [];
+  const queue: TreeNode<T>[] = [root];
+  const ret: T[][] = []; // 结果
+  while (queue.length > 0) {
+    let currLevelLen = queue.length;
+    const currLevelRet: T[] = []; // 当前层结果
+    while (currLevelLen-- > 0) {
+      const node = queue.shift()!;
+      currLevelRet.push(node.val);
+      if (node.left) queue.push(node.left);
+      if (node.right) queue.push(node.right);
+    }
+    ret.push(currLevelRet);
+  }
+  return ret;
 }
 
 /** 深度优先搜索-递归 */

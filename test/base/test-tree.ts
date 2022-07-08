@@ -13,6 +13,7 @@ import {
   dfsPrevTree,
   getTreePathsByRecursive,
   getTreePaths,
+  bfsTree2,
 } from "../../src/base/Tree";
 
 describe("树", function () {
@@ -87,6 +88,7 @@ describe("树", function () {
     const middle = ["d", "b", "e", "a", "c", "f"];
     const after = ["d", "e", "b", "f", "c", "a"];
     const bfs = ["a", "b", "c", "d", "e", "f"];
+    const bfs2 = [["a"], ["b", "c"], ["d", "e", "f"]];
 
     const searchCase = [
       { arg1: tree, arg2: "e", ret: true },
@@ -134,6 +136,10 @@ describe("树", function () {
     it("广度优先遍历-非递归", function () {
       const arr = bfsTree(tree);
       assert.deepStrictEqual(arr, bfs);
+    });
+    it("广度优先遍历-非递归2", function () {
+      const arr = bfsTree2(tree);
+      assert.deepStrictEqual(arr, bfs2);
     });
     it("深度优先搜索-递归", function () {
       searchCase.forEach((item) => {
