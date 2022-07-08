@@ -4,6 +4,18 @@
 
 import { Tree } from "../../base/Tree";
 
+/** 通过递归 */
+export function maxDepthByRecursive<T>(root: Tree<T>): number {
+  // 终止条件
+  if (root === null) return 0;
+  // 判断左右子树的深度
+  // return Math.max(maxDepthByRecursive(root.left), maxDepthByRecursive(root.right)) + 1;
+  const left = maxDepthByRecursive(root.left);
+  const right = maxDepthByRecursive(root.right);
+  // 终止条件
+  return Math.max(left, right) + 1;
+}
+
 /** 通过栈 */
 interface StackItem<T> {
   node: Tree<T>;
@@ -28,16 +40,4 @@ export function maxDepth<T>(root: Tree<T>): number {
   }
 
   return maxDepth;
-}
-
-/** 通过递归 */
-export function maxDepthByRecursive<T>(root: Tree<T>): number {
-  // 终止条件
-  if (root === null) return 0;
-  // 判断左右子树的深度
-  // return Math.max(maxDepthByRecursive(root.left), maxDepthByRecursive(root.right)) + 1;
-  const left = maxDepthByRecursive(root.left);
-  const right = maxDepthByRecursive(root.right);
-  // 终止条件
-  return Math.max(left, right) + 1;
 }

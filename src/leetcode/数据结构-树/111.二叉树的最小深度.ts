@@ -18,11 +18,13 @@ interface StackItem {
   depth: number;
 }
 export function minDepth2(root: TreeNode | null): number {
+  // 条件判断
   if (root === null) return 0;
   const stack: StackItem[] = [{ node: root, depth: 1 }];
-  let minDepth = Infinity;
+  let minDepth = Infinity; // 返回值
   while (stack.length > 0) {
     const { node, depth } = stack.pop()!;
+    // 条件判断
     if (node.left === null && node.right === null) {
       minDepth = Math.min(minDepth, depth);
     } else if (node.left === null && node.right !== null) {

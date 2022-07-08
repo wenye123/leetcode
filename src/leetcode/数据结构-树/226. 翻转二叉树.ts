@@ -4,6 +4,15 @@
 
 import { Tree } from "../../base/Tree";
 
+/** 递归 */
+export function invertTreeByRecursive<T>(root: Tree<T>): Tree<T> {
+  // 终止条件
+  if (root === null) return null;
+  // 递归
+  [root.right, root.left] = [invertTreeByRecursive(root.left), invertTreeByRecursive(root.right)];
+  return root;
+}
+
 /** 通过栈 */
 export function invertTree<T>(root: Tree<T>): Tree<T> {
   if (root === null) return null;
@@ -23,14 +32,5 @@ export function invertTree<T>(root: Tree<T>): Tree<T> {
     }
   }
 
-  return root;
-}
-
-/** 递归 */
-export function invertTreeByRecursive<T>(root: Tree<T>): Tree<T> {
-  // 终止条件
-  if (root === null) return null;
-  // 递归
-  [root.right, root.left] = [invertTreeByRecursive(root.left), invertTreeByRecursive(root.right)];
   return root;
 }

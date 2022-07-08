@@ -11,11 +11,12 @@ import {
   bsSearchTreeByRecursive,
   bfSearchTree,
   dfsPrevTree,
+  getTreePathsByRecursive,
   getTreePaths,
 } from "../../src/base/Tree";
 
-describe("基础", function () {
-  describe("树", function () {
+describe("树", function () {
+  describe("遍历和搜索", function () {
     const cases = [
       {
         arg: [],
@@ -91,16 +92,6 @@ describe("基础", function () {
       { arg1: tree, arg2: "e", ret: true },
       { arg1: tree, arg2: "g", ret: false },
     ];
-    const pathCases = [
-      {
-        arg1: createTree([1, 2, 3, null, 5]),
-        ret: [
-          [1, 2, 5],
-          [1, 3],
-        ],
-      },
-      { arg1: createTree([1]), ret: [[1]] },
-    ];
 
     it("生成树", function () {
       cases.forEach((item) => {
@@ -168,7 +159,25 @@ describe("基础", function () {
         assert.deepStrictEqual(ret, item.ret);
       });
     });
+  });
+  describe("获取全路径", function () {
+    const pathCases = [
+      {
+        arg1: createTree([1, 2, 3, null, 5]),
+        ret: [
+          [1, 2, 5],
+          [1, 3],
+        ],
+      },
+      { arg1: createTree([1]), ret: [[1]] },
+    ];
     it("深度优先遍历-获取所有路径", function () {
+      pathCases.forEach((item) => {
+        const ret = getTreePathsByRecursive(item.arg1 as any);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+    it("获取所有路径-深度优先遍历-递归", function () {
       pathCases.forEach((item) => {
         const ret = getTreePaths(item.arg1 as any);
         assert.deepStrictEqual(ret, item.ret);
