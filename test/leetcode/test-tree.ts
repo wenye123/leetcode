@@ -15,6 +15,7 @@ import { isBalanced } from "../../src/leetcode/数据结构-树/110.平衡二叉
 import { countNodes } from "../../src/leetcode/数据结构-树/222.完全二叉树的节点个数";
 import { binaryTreePaths, binaryTreePaths2 } from "../../src/leetcode/数据结构-树/257.二叉树的所有路径";
 import { levelOrder } from "../../src/leetcode/数据结构-树/102.二叉树的层序遍历";
+import { hasPathSum } from "../../src/leetcode/数据结构-树/112.路径总和";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -347,6 +348,18 @@ describe("树", function () {
     it("队列循环", function () {
       examples.forEach((example) => {
         const ret = levelOrder(example.arg1 as any);
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("112.路径总和", function () {
+    let examples = [
+      { arg1: createTree([5, 4, 8, 11, null, 13, 4, 7, 2, null, null, null, 1]), arg2: 22, ret: true },
+      { arg1: createTree([]), arg2: 0, ret: false },
+    ];
+    it("深度优先遍历", function () {
+      examples.forEach((example) => {
+        const ret = hasPathSum(example.arg1, example.arg2);
         assert.deepStrictEqual(ret, example.ret);
       });
     });
