@@ -17,6 +17,7 @@ import { binaryTreePaths, binaryTreePaths2 } from "../../src/leetcode/数据结�
 import { levelOrder } from "../../src/leetcode/数据结构-树/102.二叉树的层序遍历";
 import { hasPathSum } from "../../src/leetcode/数据结构-树/112.路径总和";
 import { sumOfLeftLeaves, sumOfLeftLeaves2 } from "../../src/leetcode/数据结构-树/404.左叶子之和";
+import { isValidBST } from "../../src/leetcode/数据结构-树/98.验证二叉搜索树";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -379,6 +380,18 @@ describe("树", function () {
     it("直接访问节点", function () {
       examples.forEach((example) => {
         const ret = sumOfLeftLeaves2(example.arg1);
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("98.验证二叉搜索树", function () {
+    let examples = [
+      { arg1: createTree([2, 1, 3]), ret: true },
+      { arg1: createTree([5, 1, 4, null, null, 3, 6]), ret: false },
+    ];
+    it("中序遍历", function () {
+      examples.forEach((example) => {
+        const ret = isValidBST(example.arg1);
         assert.deepStrictEqual(ret, example.ret);
       });
     });
