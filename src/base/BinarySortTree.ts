@@ -62,12 +62,12 @@ export function traverseBSTree<T>(root: BSTree<T>): T[] {
   return [...arr, ...right];
 }
 
-/** 查找节点是否存在 */
-export function hasBSTressNode<T>(root: BSTree<T>, val: T): boolean {
-  if (root === null) return false;
-  if (root.val === val) return true;
-  if (val < root.val) return hasBSTressNode(root.left, val);
-  return hasBSTressNode(root.right, val);
+/** 查找节点 */
+export function findBSTressNode<T>(root: BSTree<T>, val: T): BSTree<T> {
+  if (root === null) return null;
+  if (root.val === val) return root;
+  if (val < root.val) return findBSTressNode(root.left, val);
+  return findBSTressNode(root.right, val);
 }
 
 /** 获取树的最小节点 */

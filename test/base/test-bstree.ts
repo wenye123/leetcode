@@ -4,7 +4,7 @@ import {
   getMinBSTreeNode,
   getNextBSTressNode,
   getPrevBSTreeNode,
-  hasBSTressNode,
+  findBSTressNode,
   insertBSTreeNode,
   removeBSTreeNode,
   traverseBSTree,
@@ -29,8 +29,8 @@ describe("二叉排序树", function () {
   const arr = [8, 3, 10, 1, 6, 14, 4, 7, 13, 9];
   const sortArr = [1, 3, 4, 6, 7, 8, 9, 10, 13, 14];
   const searchCases = [
-    { arg1: tree, arg2: 8, ret: true },
-    { arg1: tree, arg2: 20, ret: false },
+    { arg1: tree, arg2: 6, ret: tree.left.right },
+    { arg1: tree, arg2: 20, ret: null },
   ];
   beforeEach(() => (tree = TREE()));
 
@@ -50,9 +50,9 @@ describe("二叉排序树", function () {
     const ret = traverseBSTree(tree);
     assert.deepStrictEqual(ret, sortArr);
   });
-  it("查找节点是否存在", function () {
+  it("查找节点", function () {
     searchCases.forEach((item) => {
-      const ret = hasBSTressNode(item.arg1, item.arg2);
+      const ret = findBSTressNode(item.arg1, item.arg2);
       assert.deepStrictEqual(ret, item.ret);
     });
   });
