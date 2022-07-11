@@ -27,17 +27,9 @@ export type BSTree<T = number> = BSTreeNode<T> | null;
 export function insertBSTreeNode<T>(root: BSTree<T>, val: T): BSTree<T> {
   if (root === null) return new BSTreeNode(val);
   if (val < root.val) {
-    if (root.left === null) {
-      root.left = new BSTreeNode(val);
-    } else {
-      insertBSTreeNode(root.left, val);
-    }
+    root.left = insertBSTreeNode(root.left, val);
   } else {
-    if (root.right === null) {
-      root.right = new BSTreeNode(val);
-    } else {
-      insertBSTreeNode(root.right, val);
-    }
+    root.right = insertBSTreeNode(root.right, val);
   }
   return root;
 }
@@ -102,7 +94,6 @@ export function getNextBSTressNode<T>(root: BSTree<T>): BSTree<T> {
   1. 叶子节点: 直接删除
   2. 节点只有左子树或者右子树: 节点删除 将节点的左子树或者右子树移到删除节点的位置上
   3. 节点既有左子树也有右子树: 找到节点的前驱/后继节点替换该节点 并删除前驱/后继节点(递归删除)
-    后继节点: 右子树的最小值-右节点的尽头左节点
 
   通过给左右节点重新赋值的方式删除节点 return返回的是删除后的节点
 
