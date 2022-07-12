@@ -65,8 +65,8 @@ export function leftRotate<T>(root: AVLTree<T>) {
   root.right = newRootLeft; // 根节点的右节点的左子树变成根节点的右子树
   newRoot.left = root; // 根节点本身变成右节点的左子树
   // 调整新老根节点的深度 newRootLeft深度不会改变无须调整
-  root.depth = Math.max(getAVLTreeDepth(root.left), getAVLTreeDepth(root.right)) + 1;
-  newRoot.depth = Math.max(getAVLTreeDepth(newRoot.left), getAVLTreeDepth(newRoot.right)) + 1;
+  updateAVLTreeDepth(root);
+  updateAVLTreeDepth(newRoot);
   // 返回新的根节点
   return newRoot;
 }
@@ -80,8 +80,8 @@ export function rightRotate<T>(root: AVLTree<T>) {
   root.left = newRootRight; // 根节点的左节点的右子树变成根节点的左子树
   newRoot.right = root; // 根节点本身变成左节点的右子树
   // 调整新老根节点的深度 newRootLeft深度不会改变无须调整
-  root.depth = Math.max(getAVLTreeDepth(root.left), getAVLTreeDepth(root.right)) + 1;
-  newRoot.depth = Math.max(getAVLTreeDepth(newRoot.left), getAVLTreeDepth(newRoot.right)) + 1;
+  updateAVLTreeDepth(root);
+  updateAVLTreeDepth(newRoot);
   // 返回新的根节点
   return newRoot;
 }
@@ -125,7 +125,7 @@ export function createAVLTree<T>(arr: T[]): AVLTree<T> {
   if (arr.length === 0 || arr[0] === null) return null;
   let root: AVLTree<T> = new AVLTreeNode(arr[0]);
   for (let i = 1; i < arr.length; i++) {
-    root = insertAVLTreeNode(root, arr[i]);
+    root = insertAVLTreeNode(root, arr[i]); // 根节点需要重新赋值
   }
   return root;
 }
