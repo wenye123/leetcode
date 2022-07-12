@@ -1,4 +1,5 @@
 import assert from "assert";
+import { removeDuplicates } from "../../src/leetcode/数据结构-栈/1047.删除字符串中的所有相邻重复项";
 import { evalRPN } from "../../src/leetcode/数据结构-栈/150.逆波兰表达式求值";
 import { isValid } from "../../src/leetcode/数据结构-栈/20.有效的括号";
 import { MyStack } from "../../src/leetcode/数据结构-栈/225.用队列实现栈";
@@ -69,6 +70,15 @@ describe("栈", function () {
     it("栈", function () {
       examples.forEach((example) => {
         const ret = evalRPN(example.arg);
+        assert.strictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("1047.删除字符串中的所有相邻重复项", function () {
+    const examples = [{ arg: "abbaca", ret: "ca" }];
+    it("栈", function () {
+      examples.forEach((example) => {
+        const ret = removeDuplicates(example.arg);
         assert.strictEqual(ret, example.ret);
       });
     });
