@@ -18,6 +18,7 @@ import { levelOrder } from "../../src/leetcode/数据结构-树/102.二叉树的
 import { hasPathSum } from "../../src/leetcode/数据结构-树/112.路径总和";
 import { sumOfLeftLeaves, sumOfLeftLeaves2 } from "../../src/leetcode/数据结构-树/404.左叶子之和";
 import { isValidBST } from "../../src/leetcode/数据结构-树/98.验证二叉搜索树";
+import { recoverTree } from "../../src/leetcode/数据结构-树/99.恢复二叉搜索树";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -393,6 +394,18 @@ describe("树", function () {
       examples.forEach((example) => {
         const ret = isValidBST(example.arg1);
         assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("99.恢复二叉搜索树", function () {
+    let examples = [
+      { arg1: createTree([1, 3, null, null, 2]), ret: createTree([3, 1, null, null, 2]) },
+      { arg1: createTree([3, 1, 4, null, null, 2]), ret: createTree([2, 1, 4, null, null, 3]) },
+    ];
+    it("递归", function () {
+      examples.forEach((example) => {
+        recoverTree(example.arg1);
+        assert.deepStrictEqual(example.arg1, example.ret);
       });
     });
   });
