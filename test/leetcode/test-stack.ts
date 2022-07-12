@@ -1,6 +1,7 @@
 import assert from "assert";
 import { isValid } from "../../src/leetcode/数据结构-栈/20.有效的括号";
 import { MyStack } from "../../src/leetcode/数据结构-栈/225.用队列实现栈";
+import { MyQueue } from "../../src/leetcode/数据结构-栈/232.用栈实现队列";
 import { simplifyPath } from "../../src/leetcode/数据结构-栈/71.简化路径";
 
 describe("栈", function () {
@@ -43,6 +44,20 @@ describe("栈", function () {
       assert.strictEqual(stack.pop(), 1);
       assert.strictEqual(stack.pop(), undefined);
       assert.strictEqual(stack.empty(), true);
+    });
+  });
+  describe("232.用栈实现队列", function () {
+    it("双栈", function () {
+      const queue = new MyQueue();
+      assert.strictEqual(queue.empty(), true);
+      queue.push(1);
+      assert.strictEqual(queue.empty(), false);
+      queue.push(2);
+      assert.strictEqual(queue.peek(), 1);
+      assert.strictEqual(queue.pop(), 1);
+      assert.strictEqual(queue.pop(), 2);
+      assert.strictEqual(queue.pop(), undefined);
+      assert.strictEqual(queue.empty(), true);
     });
   });
 });
