@@ -21,6 +21,7 @@ import { isValidBST } from "../../src/leetcode/数据结构-树/98.验证二叉�
 import { recoverTree } from "../../src/leetcode/数据结构-树/99.恢复二叉搜索树";
 import { sortedArrayToBST } from "../../src/leetcode/数据结构-树/108.将有序数组转换为二叉搜索树";
 import { constructMaximumBinaryTree } from "../../src/leetcode/数据结构-树/654.最大二叉树";
+import { kthSmallest } from "../../src/leetcode/数据结构-树/230.二叉搜索树中第K小的元素";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -431,6 +432,18 @@ describe("树", function () {
     it("递归", function () {
       examples.forEach((example) => {
         const ret = constructMaximumBinaryTree(example.arg1);
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("230.二叉搜索树中第K小的元素", function () {
+    let examples = [
+      { arg1: createTree([3, 1, 4, null, 2]), arg2: 1, ret: 1 },
+      { arg1: createTree([5, 3, 6, 2, 4, null, null, 1]), arg2: 3, ret: 3 },
+    ];
+    it("中序遍历", function () {
+      examples.forEach((example) => {
+        const ret = kthSmallest(example.arg1, example.arg2);
         assert.deepStrictEqual(ret, example.ret);
       });
     });
