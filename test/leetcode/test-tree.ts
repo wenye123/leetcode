@@ -20,6 +20,7 @@ import { sumOfLeftLeaves, sumOfLeftLeaves2 } from "../../src/leetcode/数据结�
 import { isValidBST } from "../../src/leetcode/数据结构-树/98.验证二叉搜索树";
 import { recoverTree } from "../../src/leetcode/数据结构-树/99.恢复二叉搜索树";
 import { sortedArrayToBST } from "../../src/leetcode/数据结构-树/108.将有序数组转换为二叉搜索树";
+import { constructMaximumBinaryTree } from "../../src/leetcode/数据结构-树/654.最大二叉树";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -418,6 +419,18 @@ describe("树", function () {
     it("不断获取中间值构建", function () {
       examples.forEach((example) => {
         const ret = sortedArrayToBST(example.arg1);
+        assert.deepStrictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("654.最大二叉树", function () {
+    let examples = [
+      { arg1: [3, 2, 1, 6, 0, 5], ret: createTree([6, 3, 5, null, 2, 0, null, null, 1]) },
+      { arg1: [3, 2, 1], ret: createTree([3, null, 2, null, 1]) },
+    ];
+    it("递归", function () {
+      examples.forEach((example) => {
+        const ret = constructMaximumBinaryTree(example.arg1);
         assert.deepStrictEqual(ret, example.ret);
       });
     });
