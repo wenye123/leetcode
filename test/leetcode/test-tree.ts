@@ -19,6 +19,7 @@ import { hasPathSum } from "../../src/leetcode/数据结构-树/112.路径总和
 import { sumOfLeftLeaves, sumOfLeftLeaves2 } from "../../src/leetcode/数据结构-树/404.左叶子之和";
 import { isValidBST } from "../../src/leetcode/数据结构-树/98.验证二叉搜索树";
 import { recoverTree } from "../../src/leetcode/数据结构-树/99.恢复二叉搜索树";
+import { sortedArrayToBST } from "../../src/leetcode/数据结构-树/108.将有序数组转换为二叉搜索树";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -406,6 +407,18 @@ describe("树", function () {
       examples.forEach((example) => {
         recoverTree(example.arg1);
         assert.deepStrictEqual(example.arg1, example.ret);
+      });
+    });
+  });
+  describe("108.将有序数组转换为二叉搜索树", function () {
+    let examples = [
+      { arg1: [-10, -3, 0, 5, 9], ret: createTree([0, -3, 9, -10, null, 5]) },
+      { arg1: [1, 3], ret: createTree([3, 1]) },
+    ];
+    it("不断获取中间值构建", function () {
+      examples.forEach((example) => {
+        const ret = sortedArrayToBST(example.arg1);
+        assert.deepStrictEqual(ret, example.ret);
       });
     });
   });
