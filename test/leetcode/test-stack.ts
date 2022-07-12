@@ -41,6 +41,7 @@ describe("栈", function () {
       assert.strictEqual(stack.top(), 2);
       assert.strictEqual(stack.pop(), 2);
       assert.strictEqual(stack.pop(), 1);
+      assert.strictEqual(stack.pop(), undefined);
       assert.strictEqual(stack.empty(), true);
     });
   });
