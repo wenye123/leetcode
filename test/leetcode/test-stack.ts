@@ -1,4 +1,5 @@
 import assert from "assert";
+import { evalRPN } from "../../src/leetcode/数据结构-栈/150.逆波兰表达式求值";
 import { isValid } from "../../src/leetcode/数据结构-栈/20.有效的括号";
 import { MyStack } from "../../src/leetcode/数据结构-栈/225.用队列实现栈";
 import { MyQueue } from "../../src/leetcode/数据结构-栈/232.用栈实现队列";
@@ -58,6 +59,18 @@ describe("栈", function () {
       assert.strictEqual(queue.pop(), 2);
       assert.strictEqual(queue.pop(), undefined);
       assert.strictEqual(queue.empty(), true);
+    });
+  });
+  describe("150.逆波兰表达式求值", function () {
+    const examples = [
+      { arg: ["2", "1", "+", "3", "*"], ret: 9 },
+      { arg: ["10", "6", "9", "3", "+", "-11", "*", "/", "*", "17", "+", "5", "+"], ret: 22 },
+    ];
+    it("栈", function () {
+      examples.forEach((example) => {
+        const ret = evalRPN(example.arg);
+        assert.strictEqual(ret, example.ret);
+      });
     });
   });
 });

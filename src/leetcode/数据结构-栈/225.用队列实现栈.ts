@@ -13,7 +13,6 @@ export class MyStack {
   queue1: number[];
   /** 备份队列 */
   queue2: number[];
-
   constructor() {
     this.queue1 = [];
     this.queue2 = [];

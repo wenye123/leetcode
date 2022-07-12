@@ -13,7 +13,6 @@
 export class MyQueue {
   stackIn: number[] = []; // 存储值
   stackOut: number[] = []; // 实际推出值
-
   constructor() {
     this.stackIn = [];
     this.stackOut = [];
