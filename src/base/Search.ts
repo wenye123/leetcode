@@ -37,7 +37,9 @@ export function binarySearch(nums: number[], key: number) {
     highIndex = nums.length - 1,
     midIndex;
   while (lowIndex <= highIndex) {
-    midIndex = Math.floor((lowIndex + highIndex) / 2);
+    // 这里用<还是<=是看循环里面有没有针对相等情况进行return
+    // midIndex = Math.floor((lowIndex + highIndex) / 2); // 可能会溢出
+    midIndex = lowIndex + ((highIndex - lowIndex) >> 2);
     if (nums[midIndex] === key) {
       return midIndex;
     } else if (nums[midIndex] < key) {
