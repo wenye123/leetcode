@@ -6,10 +6,12 @@
 
   const result = [];
   function backtrack(已选择列表, 可选择列表) {
+    // 满足条件
     if (满足结束条件) {
-      result.push(已选择列表)
+      result.push([...已选择列表]); // 因为引用类型这里需要复制下值
       return
     }
+    // 循环可选列表
     for (选择 of 可选择列表) {
       做选择: 已选择列表.push(选择)
       backtrack(已选择列表, 可选择列表)
