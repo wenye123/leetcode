@@ -2,6 +2,7 @@ import assert from "assert";
 import { letterCombinations } from "../../src/leetcode/算法-回溯/17.电话号码的字母组合";
 import { combinationSum } from "../../src/leetcode/算法-回溯/39.组合总和";
 import { permute } from "../../src/leetcode/算法-回溯/46.全排列";
+import { solveNQueens } from "../../src/leetcode/算法-回溯/51.N 皇后";
 import { exist } from "../../src/leetcode/算法-回溯/79.单词搜索";
 
 describe("回溯", function () {
@@ -91,6 +92,27 @@ describe("回溯", function () {
     it("回溯", function () {
       cases.forEach((item) => {
         const ret = combinationSum(item.arg1, item.arg2);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("51.N 皇后", function () {
+    const cases = [
+      {
+        arg1: 1,
+        ret: [["Q"]],
+      },
+      {
+        arg1: 4,
+        ret: [
+          [".Q..", "...Q", "Q...", "..Q."],
+          ["..Q.", "Q...", "...Q", ".Q.."],
+        ],
+      },
+    ];
+    it("回溯", function () {
+      cases.forEach((item) => {
+        const ret = solveNQueens(item.arg1);
         assert.deepStrictEqual(ret, item.ret);
       });
     });

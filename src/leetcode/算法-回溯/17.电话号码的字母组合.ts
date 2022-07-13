@@ -17,26 +17,26 @@ export function letterCombinations(digits: string): string[] {
   if (digits === "") return [];
 
   const result: string[] = [];
-  let list: string[][] = [];
+  let arr: string[][] = [];
   for (let n of digits) {
-    list.push(map[n]);
+    arr.push(map[n]);
   }
 
-  // 回溯函数(已选择列表 待选择列表)
-  function backtrack(track: string[], list: string[][]) {
-    // 结束条件
-    if (track.length === digits.length) return result.push(track.join(""));
-    // 循环选择
-    for (let w of list[track.length]) {
+  // 回溯函数(已选路径 待选数组)
+  function backtrack(paths: string[], arr: string[][]) {
+    // 终极条件
+    if (paths.length === digits.length) return result.push(paths.join(""));
+    // 回溯循环
+    for (let w of arr[paths.length]) {
       // 做选择
-      track.push(w);
+      paths.push(w);
       // 递归
-      backtrack(track, list);
+      backtrack(paths, arr);
       // 撤销选择
-      track.pop();
+      paths.pop();
     }
   }
 
-  backtrack([], list);
+  backtrack([], arr);
   return result;
 }

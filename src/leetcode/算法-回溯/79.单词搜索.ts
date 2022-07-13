@@ -36,7 +36,7 @@ export function exist(board: string[][], word: string): boolean {
       backtarck(i - 1, j, w + 1) ||
       backtarck(i, j + 1, w + 1) ||
       backtarck(i, j - 1, w + 1);
-    // 回溯
+    // 撤销选择
     board[i][j] = letter;
     return ret;
   }
