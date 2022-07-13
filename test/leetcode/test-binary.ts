@@ -1,5 +1,6 @@
 import { assert } from "chai";
 import { findMin } from "../../src/leetcode/算法-二分/153.寻找旋转排序数组中的最小值";
+import { mySqrt } from "../../src/leetcode/算法-二分/69.x的平方根";
 import { search } from "../../src/leetcode/算法-二分/704.二分查找";
 
 describe("二分", function () {
@@ -24,6 +25,18 @@ describe("二分", function () {
     it("二分", function () {
       examples.forEach((example) => {
         const ret = findMin(example.arg1);
+        assert.strictEqual(ret, example.ret);
+      });
+    });
+  });
+  describe("69.x的平方根", function () {
+    const examples = [
+      { arg1: 4, ret: 2 },
+      { arg1: 8, ret: 2 },
+    ];
+    it("二分", function () {
+      examples.forEach((example) => {
+        const ret = mySqrt(example.arg1);
         assert.strictEqual(ret, example.ret);
       });
     });

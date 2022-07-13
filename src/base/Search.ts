@@ -33,19 +33,19 @@ export function sentrySearch2(nums: number[], key: number) {
 
 // 折半查找
 export function binarySearch(nums: number[], key: number) {
-  let lowIndex = 0,
-    highIndex = nums.length - 1,
-    midIndex;
-  while (lowIndex <= highIndex) {
-    // 这里用<还是<=是看循环里面有没有针对相等情况进行return
-    // midIndex = Math.floor((lowIndex + highIndex) / 2); // 可能会溢出
-    midIndex = lowIndex + ((highIndex - lowIndex) >> 2);
-    if (nums[midIndex] === key) {
-      return midIndex;
-    } else if (nums[midIndex] < key) {
-      lowIndex = midIndex + 1;
+  let low = 0,
+    high = nums.length - 1;
+  // lowIndex和hignIndex如果有相等逻辑 循环里面需要return相等情况 并且low和hight都要+1-1
+  // 否则不专门处理相等逻辑 low和high其中一个要等于mid 最终return left
+  while (low <= high) {
+    // mid = Math.floor((low + high) / 2); // 可能会溢出
+    const mid = low + ((high - low) >> 1);
+    if (nums[mid] === key) {
+      return mid;
+    } else if (nums[mid] < key) {
+      low = mid + 1;
     } else {
-      highIndex = midIndex - 1;
+      high = mid - 1;
     }
   }
   return -1;

@@ -8,7 +8,7 @@ export function search(nums: number[], target: number): number {
     right = nums.length - 1;
   while (left <= right) {
     // const mid = Math.floor((left + right) / 2);
-    const mid = left + ((right - left) >> 2);
+    const mid = left + ((right - left) >> 1);
     if (nums[mid] === target) return mid;
     if (nums[mid] > target) {
       right = mid - 1;
