@@ -1,4 +1,5 @@
 import assert from "assert";
+import { letterCombinations } from "../../src/leetcode/算法-回溯/17.电话号码的字母组合";
 import { permute } from "../../src/leetcode/算法-回溯/46.全排列";
 import { exist } from "../../src/leetcode/算法-回溯/79.单词搜索";
 
@@ -39,12 +40,33 @@ describe("回溯", function () {
         arg2: "ABCCED",
         ret: true,
       },
+      {
+        arg1: [
+          ["a", "b"],
+          ["c", "d"],
+        ],
+        arg2: "abcd",
+        ret: false,
+      },
     ];
-
-    it("递归", function () {
+    it("递归1", function () {
       cases.forEach((item) => {
         const ret = exist(item.arg1, item.arg2);
         assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("17.电话号码的字母组合", function () {
+    const cases = [
+      {
+        arg1: "23",
+        ret: ["ad", "ae", "af", "bd", "be", "bf", "cd", "ce", "cf"],
+      },
+    ];
+    it("回溯", function () {
+      cases.forEach((item) => {
+        const ret = letterCombinations(item.arg1);
+        assert.deepStrictEqual(ret, item.ret);
       });
     });
   });
