@@ -5,6 +5,7 @@ import { combinationSum } from "../../src/leetcode/算法-回溯/39.组合总和
 import { permute } from "../../src/leetcode/算法-回溯/46.全排列";
 import { solveNQueens } from "../../src/leetcode/算法-回溯/51.N 皇后";
 import { combine } from "../../src/leetcode/算法-回溯/77.组合";
+import { subsets } from "../../src/leetcode/算法-回溯/78.子集";
 import { exist } from "../../src/leetcode/算法-回溯/79.单词搜索";
 
 describe("回溯", function () {
@@ -171,6 +172,20 @@ describe("回溯", function () {
     it("回溯", function () {
       cases.forEach((item) => {
         const ret = combine(item.arg1, item.arg2);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("78.子集", function () {
+    const cases = [
+      {
+        arg1: [1, 2, 3],
+        ret: [[], [1], [1, 2], [1, 2, 3], [1, 3], [2], [2, 3], [3]],
+      },
+    ];
+    it("回溯", function () {
+      cases.forEach((item) => {
+        const ret = subsets(item.arg1);
         assert.deepStrictEqual(ret, item.ret);
       });
     });
