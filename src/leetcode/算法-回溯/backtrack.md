@@ -20,5 +20,17 @@
   回溯本质是通过递归进行深度优先遍历
     - 叶子节点就是return的结果值
 
+  剪枝: 为了让出现过的值不在出现 通过修改循环初始值实现
+    例子: initNm就是为了剪去之前出现的值
+    function backtrack(paths: number[], initNum: number) {
+      if (paths.length === 2) {
+        return result.push([...paths]);
+      }
+      for (let i = initNum; i <= n; i++) {
+        paths.push(i);
+        backtrack(paths, i + 1); // 通过传递i+1来剪枝
+        paths.pop();
+      }
+    }
 
 ```

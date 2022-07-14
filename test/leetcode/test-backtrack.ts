@@ -4,6 +4,7 @@ import { solveSudoku } from "../../src/leetcode/算法-回溯/37.解数独";
 import { combinationSum } from "../../src/leetcode/算法-回溯/39.组合总和";
 import { permute } from "../../src/leetcode/算法-回溯/46.全排列";
 import { solveNQueens } from "../../src/leetcode/算法-回溯/51.N 皇后";
+import { combine } from "../../src/leetcode/算法-回溯/77.组合";
 import { exist } from "../../src/leetcode/算法-回溯/79.单词搜索";
 
 describe("回溯", function () {
@@ -119,7 +120,6 @@ describe("回溯", function () {
     });
   });
   describe("37.解数独", function () {
-    this.timeout(3000);
     const cases = [
       {
         arg1: [
@@ -150,6 +150,28 @@ describe("回溯", function () {
       cases.forEach((item) => {
         solveSudoku(item.arg1);
         assert.deepStrictEqual(item.arg1, item.ret);
+      });
+    });
+  });
+  describe("77.组合", function () {
+    const cases = [
+      {
+        arg1: 4,
+        arg2: 2,
+        ret: [
+          [1, 2],
+          [1, 3],
+          [1, 4],
+          [2, 3],
+          [2, 4],
+          [3, 4],
+        ],
+      },
+    ];
+    it("回溯", function () {
+      cases.forEach((item) => {
+        const ret = combine(item.arg1, item.arg2);
+        assert.deepStrictEqual(ret, item.ret);
       });
     });
   });

@@ -8,13 +8,13 @@ export function combinationSum(candidates: number[], target: number): number[][]
   // 结果
   const result: number[][] = [];
 
-  // 回溯函数(已选路径 待选数组)
-  function backtrack(paths: number[], arr: number[], index: number, sum: number) {
+  // 回溯函数(已选路径 待选数组) initIndex是初始索引-剪枝使用
+  function backtrack(paths: number[], arr: number[], initIndex: number, sum: number) {
     // 终止条件
     if (sum > target) return;
     if (sum === target) return result.push([...paths]);
     // 回溯循环: 从index开始 跳过遍历过的首元素
-    for (let i = index; i < arr.length; i++) {
+    for (let i = initIndex; i < arr.length; i++) {
       // 选择
       if (sum + arr[i] > target) continue;
       paths.push(arr[i]);
