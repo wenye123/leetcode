@@ -146,11 +146,10 @@ describe("回溯", function () {
         ],
       },
     ];
-    it.only("回溯", function () {
+    it("回溯", function () {
       cases.forEach((item) => {
         solveSudoku(item.arg1);
-        console.log(JSON.stringify(item.arg1));
-        // assert.deepStrictEqual(item.arg1, item.ret);
+        assert.deepStrictEqual(item.arg1, item.ret);
       });
     });
   });
