@@ -4,10 +4,12 @@ import { letterCombinations } from "../../src/leetcode/算法-回溯/17.电话�
 import { solveSudoku } from "../../src/leetcode/算法-回溯/37.解数独";
 import { combinationSum } from "../../src/leetcode/算法-回溯/39.组合总和";
 import { permute } from "../../src/leetcode/算法-回溯/46.全排列";
+import { permuteUnique } from "../../src/leetcode/算法-回溯/47.全排列 II";
 import { solveNQueens } from "../../src/leetcode/算法-回溯/51.N 皇后";
 import { combine } from "../../src/leetcode/算法-回溯/77.组合";
 import { subsets } from "../../src/leetcode/算法-回溯/78.子集";
 import { exist } from "../../src/leetcode/算法-回溯/79.单词搜索";
+import { restoreIpAddresses } from "../../src/leetcode/算法-回溯/93.复原 IP 地址";
 
 describe("回溯", function () {
   describe("46.全排列", function () {
@@ -208,6 +210,53 @@ describe("回溯", function () {
     it("回溯", function () {
       cases.forEach((item) => {
         const ret = partition(item.arg1);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("93.复原 IP 地址", function () {
+    const cases = [
+      {
+        arg1: "25525511135",
+        ret: ["255.255.11.135", "255.255.111.35"],
+      },
+      {
+        arg1: "0000",
+        ret: ["0.0.0.0"],
+      },
+    ];
+    it("回溯", function () {
+      cases.forEach((item) => {
+        const ret = restoreIpAddresses(item.arg1);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("47.全排列 II", function () {
+    const cases = [
+      {
+        arg1: [1, 1, 2],
+        ret: [
+          [1, 1, 2],
+          [1, 2, 1],
+          [2, 1, 1],
+        ],
+      },
+      {
+        arg1: [1, 2, 3],
+        ret: [
+          [1, 2, 3],
+          [1, 3, 2],
+          [2, 1, 3],
+          [2, 3, 1],
+          [3, 1, 2],
+          [3, 2, 1],
+        ],
+      },
+    ];
+    it("回溯", function () {
+      cases.forEach((item) => {
+        const ret = permuteUnique(item.arg1);
         assert.deepStrictEqual(ret, item.ret);
       });
     });
