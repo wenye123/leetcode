@@ -1,4 +1,5 @@
 import assert from "assert";
+import { partition } from "../../src/leetcode/算法-回溯/131.分割回文串";
 import { letterCombinations } from "../../src/leetcode/算法-回溯/17.电话号码的字母组合";
 import { solveSudoku } from "../../src/leetcode/算法-回溯/37.解数独";
 import { combinationSum } from "../../src/leetcode/算法-回溯/39.组合总和";
@@ -186,6 +187,27 @@ describe("回溯", function () {
     it("回溯", function () {
       cases.forEach((item) => {
         const ret = subsets(item.arg1);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("131.分割回文串", function () {
+    const cases = [
+      {
+        arg1: "aab",
+        ret: [
+          ["a", "a", "b"],
+          ["aa", "b"],
+        ],
+      },
+      {
+        arg1: "a",
+        ret: [["a"]],
+      },
+    ];
+    it("回溯", function () {
+      cases.forEach((item) => {
+        const ret = partition(item.arg1);
         assert.deepStrictEqual(ret, item.ret);
       });
     });
