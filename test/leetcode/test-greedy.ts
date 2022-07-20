@@ -1,5 +1,6 @@
 import assert from "assert";
 import { canJump, canJump2 } from "../../src/leetcode/算法-贪心/44.跳跃游戏";
+import { jump } from "../../src/leetcode/算法-贪心/45.跳跃游戏 II";
 import { findContentChildren } from "../../src/leetcode/算法-贪心/455.分发饼干";
 import { lemonadeChange } from "../../src/leetcode/算法-贪心/860.柠檬水找零";
 
@@ -62,6 +63,24 @@ describe("贪心算法", function () {
     it("贪心+双指针", function () {
       cases.forEach((item) => {
         const ret = findContentChildren(item.arg1, item.arg2);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("45.跳跃游戏 II", function () {
+    const cases = [
+      {
+        arg1: [2, 3, 1, 1, 4],
+        ret: 2,
+      },
+      {
+        arg1: [2, 3, 0, 1, 4],
+        ret: 2,
+      },
+    ];
+    it("贪心", function () {
+      cases.forEach((item) => {
+        const ret = jump(item.arg1);
         assert.strictEqual(ret, item.ret);
       });
     });
