@@ -4,6 +4,7 @@ import { canJump, canJump2 } from "../../src/leetcode/算法-贪心/44.跳跃游
 import { jump } from "../../src/leetcode/算法-贪心/45.跳跃游戏 II";
 import { findMinArrowShots } from "../../src/leetcode/算法-贪心/452.用最少数量的箭引爆气球";
 import { findContentChildren } from "../../src/leetcode/算法-贪心/455.分发饼干";
+import { leastInterval } from "../../src/leetcode/算法-贪心/621.任务调度器";
 import { lemonadeChange } from "../../src/leetcode/算法-贪心/860.柠檬水找零";
 
 describe("贪心算法", function () {
@@ -138,6 +139,21 @@ describe("贪心算法", function () {
     it("贪心", function () {
       cases.forEach((item) => {
         const ret = eraseOverlapIntervals(item.arg1);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("621.任务调度器", function () {
+    const cases = [
+      {
+        arg1: ["A", "A", "A", "B", "B", "B"],
+        arg2: 2,
+        ret: 8,
+      },
+    ];
+    it("暴力解法", function () {
+      cases.forEach((item) => {
+        const ret = leastInterval(item.arg1, item.arg2);
         assert.strictEqual(ret, item.ret);
       });
     });
