@@ -2,6 +2,7 @@ import assert from "assert";
 import { lengthOfLIS, lengthOfLIS2 } from "../../src/leetcode/算法-动态规划/300. 最长递增子序列";
 import { coinChange } from "../../src/leetcode/算法-动态规划/322.零钱兑换";
 import { fib, fibByDp } from "../../src/leetcode/算法-动态规划/509. 斐波那契数";
+import { uniquePaths } from "../../src/leetcode/算法-动态规划/62.不同路径";
 import { climbStairs } from "../../src/leetcode/算法-动态规划/70.爬楼梯";
 import { minCostClimbingStairs, minCostClimbingStairs2 } from "../../src/leetcode/算法-动态规划/746.使用最小花费爬楼梯";
 
@@ -81,6 +82,19 @@ describe("动态规划", function () {
     it("动态规划-变量写法", function () {
       examples.forEach((item) => {
         const ret = minCostClimbingStairs2(item.arg);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("62.不同路径", function () {
+    const examples = [
+      { arg1: 3, arg2: 2, ret: 3 },
+      { arg1: 3, arg2: 3, ret: 6 },
+      { arg1: 3, arg2: 7, ret: 28 },
+    ];
+    it("动态规划", function () {
+      examples.forEach((item) => {
+        const ret = uniquePaths(item.arg1, item.arg2);
         assert.strictEqual(ret, item.ret);
       });
     });
