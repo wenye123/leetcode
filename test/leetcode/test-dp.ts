@@ -3,6 +3,7 @@ import { lengthOfLIS, lengthOfLIS2 } from "../../src/leetcode/算法-动态规�
 import { coinChange } from "../../src/leetcode/算法-动态规划/322.零钱兑换";
 import { fib, fibByDp } from "../../src/leetcode/算法-动态规划/509. 斐波那契数";
 import { climbStairs } from "../../src/leetcode/算法-动态规划/70.爬楼梯";
+import { minCostClimbingStairs, minCostClimbingStairs2 } from "../../src/leetcode/算法-动态规划/746.使用最小花费爬楼梯";
 
 describe("动态规划", function () {
   describe("509. 斐波那契数", function () {
@@ -62,6 +63,24 @@ describe("动态规划", function () {
     it("动态规划", function () {
       examples.forEach((item) => {
         const ret = climbStairs(item.arg);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("746.使用最小花费爬楼梯", function () {
+    const examples = [
+      { arg: [10, 15, 20], ret: 15 },
+      { arg: [1, 100, 1, 1, 1, 100, 1, 1, 100, 1], ret: 6 },
+    ];
+    it("动态规划", function () {
+      examples.forEach((item) => {
+        const ret = minCostClimbingStairs(item.arg);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+    it("动态规划-变量写法", function () {
+      examples.forEach((item) => {
+        const ret = minCostClimbingStairs2(item.arg);
         assert.strictEqual(ret, item.ret);
       });
     });
