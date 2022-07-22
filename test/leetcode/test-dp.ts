@@ -2,6 +2,7 @@ import assert from "assert";
 import { lengthOfLIS, lengthOfLIS2 } from "../../src/leetcode/算法-动态规划/300. 最长递增子序列";
 import { coinChange } from "../../src/leetcode/算法-动态规划/322.零钱兑换";
 import { fib, fibByDp } from "../../src/leetcode/算法-动态规划/509. 斐波那契数";
+import { climbStairs } from "../../src/leetcode/算法-动态规划/70.爬楼梯";
 
 describe("动态规划", function () {
   describe("509. 斐波那契数", function () {
@@ -49,6 +50,18 @@ describe("动态规划", function () {
     it("贪心+二分", function () {
       examples.forEach((item) => {
         const ret = lengthOfLIS2(item.arg);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("70.爬楼梯", function () {
+    const examples = [
+      { arg: 2, ret: 2 },
+      { arg: 3, ret: 3 },
+    ];
+    it("动态规划", function () {
+      examples.forEach((item) => {
+        const ret = climbStairs(item.arg);
         assert.strictEqual(ret, item.ret);
       });
     });
