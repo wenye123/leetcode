@@ -1,5 +1,5 @@
 import assert from "assert";
-import { maxProfit } from "../../src/leetcode/算法-动态规划/121.买卖股票的最佳时机";
+import { maxProfit, maxProfit2 } from "../../src/leetcode/算法-动态规划/121.买卖股票的最佳时机";
 import { rob } from "../../src/leetcode/算法-动态规划/198.打家劫舍";
 import { rob as rob2 } from "../../src/leetcode/算法-动态规划/213.打家劫舍 II";
 import { lengthOfLIS, lengthOfLIS2 } from "../../src/leetcode/算法-动态规划/300. 最长递增子序列";
@@ -134,6 +134,12 @@ describe("动态规划", function () {
     it("动态规划", function () {
       examples.forEach((item) => {
         const ret = maxProfit(item.arg1);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+    it("动态规划-变量写法", function () {
+      examples.forEach((item) => {
+        const ret = maxProfit2(item.arg1);
         assert.strictEqual(ret, item.ret);
       });
     });

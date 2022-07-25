@@ -2,11 +2,6 @@
  * https://leetcode.cn/problems/best-time-to-buy-and-sell-stock/
  */
 
-/**
- * 状态:
- * 方程式:
- * 边界:
- */
 export function maxProfit(prices: number[]): number {
   if (prices.length === 0) return 0;
 
@@ -21,4 +16,19 @@ export function maxProfit(prices: number[]): number {
   }
 
   return Math.max(...dp);
+}
+
+/** 变量写法 */
+export function maxProfit2(prices: number[]): number {
+  if (prices.length === 0) return 0;
+
+  let maxProfit = 0;
+  let minPrice = prices[0];
+
+  for (let i = 0; i < prices.length; i++) {
+    maxProfit = Math.max(maxProfit, prices[i] - minPrice);
+    minPrice = Math.min(minPrice, prices[i]);
+  }
+
+  return maxProfit;
 }
