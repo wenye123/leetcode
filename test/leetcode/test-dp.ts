@@ -1,4 +1,5 @@
 import assert from "assert";
+import { rob } from "../../src/leetcode/算法-动态规划/198.打家劫舍";
 import { lengthOfLIS, lengthOfLIS2 } from "../../src/leetcode/算法-动态规划/300. 最长递增子序列";
 import { coinChange } from "../../src/leetcode/算法-动态规划/322.零钱兑换";
 import { fib, fibByDp } from "../../src/leetcode/算法-动态规划/509. 斐波那契数";
@@ -95,6 +96,18 @@ describe("动态规划", function () {
     it("动态规划", function () {
       examples.forEach((item) => {
         const ret = uniquePaths(item.arg1, item.arg2);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("198.打家劫舍", function () {
+    const examples = [
+      { arg1: [1, 2, 3, 1], ret: 4 },
+      { arg1: [2, 7, 9, 3, 1], ret: 12 },
+    ];
+    it("动态规划", function () {
+      examples.forEach((item) => {
+        const ret = rob(item.arg1);
         assert.strictEqual(ret, item.ret);
       });
     });
