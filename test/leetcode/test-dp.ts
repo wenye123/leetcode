@@ -1,5 +1,8 @@
 import assert from "assert";
-import { maxProfit, maxProfit2 } from "../../src/leetcode/算法-动态规划/121.买卖股票的最佳时机";
+import { maxProfit1_1, maxProfit1_2 } from "../../src/leetcode/算法-动态规划/121.买卖股票的最佳时机";
+import { maxProfit2_1, maxProfit2_2 } from "../../src/leetcode/算法-动态规划/122.买卖股票的最佳时机 II";
+import { maxProfit3_1 } from "../../src/leetcode/算法-动态规划/123.买卖股票的最佳时机 III";
+import { maxProfit4_1 } from "../../src/leetcode/算法-动态规划/188.买卖股票的最佳时机 IV";
 import { rob } from "../../src/leetcode/算法-动态规划/198.打家劫舍";
 import { rob as rob2 } from "../../src/leetcode/算法-动态规划/213.打家劫舍 II";
 import { lengthOfLIS, lengthOfLIS2 } from "../../src/leetcode/算法-动态规划/300. 最长递增子序列";
@@ -131,15 +134,57 @@ describe("动态规划", function () {
       { arg1: [7, 1, 5, 3, 6, 4], ret: 5 },
       { arg1: [7, 6, 4, 3, 1], ret: 0 },
     ];
-    it("动态规划", function () {
+    it("贪心", function () {
       examples.forEach((item) => {
-        const ret = maxProfit(item.arg1);
+        const ret = maxProfit1_1(item.arg1);
         assert.strictEqual(ret, item.ret);
       });
     });
-    it("动态规划-变量写法", function () {
+    it("动态规划", function () {
       examples.forEach((item) => {
-        const ret = maxProfit2(item.arg1);
+        const ret = maxProfit1_2(item.arg1);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("122.买卖股票的最佳时机 II", function () {
+    const examples = [
+      { arg1: [7, 1, 5, 3, 6, 4], ret: 7 },
+      { arg1: [1, 2, 3, 4, 5], ret: 4 },
+    ];
+    it("贪心", function () {
+      examples.forEach((item) => {
+        const ret = maxProfit2_1(item.arg1);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+    it("动态规划", function () {
+      examples.forEach((item) => {
+        const ret = maxProfit2_2(item.arg1);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("123.买卖股票的最佳时机 III", function () {
+    const examples = [
+      { arg1: [3, 3, 5, 0, 0, 3, 1, 4], ret: 6 },
+      { arg1: [1, 2, 3, 4, 5], ret: 4 },
+    ];
+    it("动态规划", function () {
+      examples.forEach((item) => {
+        const ret = maxProfit3_1(item.arg1);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("188.买卖股票的最佳时机 IV", function () {
+    const examples = [
+      { arg1: 2, arg2: [2, 4, 1], ret: 2 },
+      { arg1: 2, arg2: [3, 2, 6, 5, 0, 3], ret: 7 },
+    ];
+    it("动态规划", function () {
+      examples.forEach((item) => {
+        const ret = maxProfit4_1(item.arg1, item.arg2);
         assert.strictEqual(ret, item.ret);
       });
     });
