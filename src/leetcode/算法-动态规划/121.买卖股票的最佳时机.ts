@@ -17,6 +17,21 @@ export function maxProfit1_1(prices: number[]): number {
   return maxProfit;
 }
 
+// export function maxProfit1_1(prices: number[]): number {
+//   if (prices.length === 0) return 0;
+
+//   // 状态 i天数 值为利润
+//   const dp = [];
+//   let minPrice = prices[0]; // 最小的股价
+
+//   for (let i = 0; i < prices.length; i++) {
+//     dp[i] = prices[i] - minPrice;
+//     minPrice = Math.min(minPrice, prices[i]);
+//   }
+
+//   return Math.max(...dp);
+// }
+
 /**
  * 动态规划
  *
