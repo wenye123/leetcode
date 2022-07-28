@@ -8,6 +8,7 @@ import { rob as rob2 } from "../../src/leetcode/算法-动态规划/213.打家�
 import { lengthOfLIS, lengthOfLIS2 } from "../../src/leetcode/算法-动态规划/300. 最长递增子序列";
 import { coinChange } from "../../src/leetcode/算法-动态规划/322.零钱兑换";
 import { fib, fibByDp } from "../../src/leetcode/算法-动态规划/509. 斐波那契数";
+import { change } from "../../src/leetcode/算法-动态规划/518.零钱兑换 II";
 import { maxSubArray1, maxSubArray2 } from "../../src/leetcode/算法-动态规划/53.最大子数组和";
 import { uniquePaths } from "../../src/leetcode/算法-动态规划/62.不同路径";
 import { findLengthOfLCIS1, findLengthOfLCIS2 } from "../../src/leetcode/算法-动态规划/674.最长连续递增序列";
@@ -224,6 +225,18 @@ describe("动态规划", function () {
     it("动态规划", function () {
       examples.forEach((item) => {
         const ret = findLengthOfLCIS2(item.arg1);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("518.零钱兑换 II", function () {
+    const examples = [
+      { arg1: 5, arg2: [1, 2, 5], ret: 4 },
+      { arg1: 3, arg2: [2], ret: 0 },
+    ];
+    it("动态规划", function () {
+      examples.forEach((item) => {
+        const ret = change(item.arg1, item.arg2);
         assert.strictEqual(ret, item.ret);
       });
     });
