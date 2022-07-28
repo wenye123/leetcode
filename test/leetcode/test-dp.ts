@@ -10,6 +10,7 @@ import { coinChange } from "../../src/leetcode/算法-动态规划/322.零钱兑
 import { fib, fibByDp } from "../../src/leetcode/算法-动态规划/509. 斐波那契数";
 import { maxSubArray1, maxSubArray2 } from "../../src/leetcode/算法-动态规划/53.最大子数组和";
 import { uniquePaths } from "../../src/leetcode/算法-动态规划/62.不同路径";
+import { findLengthOfLCIS1, findLengthOfLCIS2 } from "../../src/leetcode/算法-动态规划/674.最长连续递增序列";
 import { climbStairs } from "../../src/leetcode/算法-动态规划/70.爬楼梯";
 import { minCostClimbingStairs, minCostClimbingStairs2 } from "../../src/leetcode/算法-动态规划/746.使用最小花费爬楼梯";
 
@@ -205,6 +206,24 @@ describe("动态规划", function () {
     it("动态规划", function () {
       examples.forEach((item) => {
         const ret = maxSubArray2(item.arg1);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("674.最长连续递增序列", function () {
+    const examples = [
+      { arg1: [1, 3, 5, 4, 7], ret: 3 },
+      { arg1: [2, 2, 2, 2, 2], ret: 1 },
+    ];
+    it("暴力", function () {
+      examples.forEach((item) => {
+        const ret = findLengthOfLCIS1(item.arg1);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+    it("动态规划", function () {
+      examples.forEach((item) => {
+        const ret = findLengthOfLCIS2(item.arg1);
         assert.strictEqual(ret, item.ret);
       });
     });
