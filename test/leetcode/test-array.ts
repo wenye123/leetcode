@@ -1,5 +1,6 @@
 import { assert } from "chai";
 import { twoSum, twoSumWithMap } from "../../src/leetcode/基本-数组/1.两数之和";
+import { isPalindrome } from "../../src/leetcode/基本-数组/125.验证回文串";
 import { threeSum } from "../../src/leetcode/基本-数组/15.三数之和";
 import { twoSum2 } from "../../src/leetcode/基本-数组/167.两数之和2";
 import { minSubArrayLen, minSubArrayLen2 } from "../../src/leetcode/基本-数组/209.长度最小的子数组";
@@ -161,6 +162,18 @@ describe("数组", function () {
       cases.forEach((item) => {
         reverseString(item.arg);
         assert.deepStrictEqual(item.ret, item.arg);
+      });
+    });
+  });
+  describe("125.验证回文串", function () {
+    const examples = [
+      { arg1: "A man, a plan, a canal: Panama", ret: true },
+      { arg1: "race a car", ret: false },
+    ];
+    it("双指针", function () {
+      examples.forEach((item) => {
+        const ret = isPalindrome(item.arg1);
+        assert.strictEqual(ret, item.ret);
       });
     });
   });

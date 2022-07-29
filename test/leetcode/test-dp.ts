@@ -1,4 +1,5 @@
 import assert from "assert";
+import { longestCommonSubsequence, maxSubString } from "../../src/leetcode/算法-动态规划/1143.最长公共子序列";
 import { maxProfit1_1, maxProfit1_2 } from "../../src/leetcode/算法-动态规划/121.买卖股票的最佳时机";
 import { maxProfit2_1, maxProfit2_2 } from "../../src/leetcode/算法-动态规划/122.买卖股票的最佳时机 II";
 import { maxProfit3_1 } from "../../src/leetcode/算法-动态规划/123.买卖股票的最佳时机 III";
@@ -7,6 +8,7 @@ import { rob } from "../../src/leetcode/算法-动态规划/198.打家劫舍";
 import { rob as rob2 } from "../../src/leetcode/算法-动态规划/213.打家劫舍 II";
 import { lengthOfLIS, lengthOfLIS2 } from "../../src/leetcode/算法-动态规划/300. 最长递增子序列";
 import { coinChange } from "../../src/leetcode/算法-动态规划/322.零钱兑换";
+import { isSubsequence, isSubsequence1 } from "../../src/leetcode/算法-动态规划/392.判断子序列";
 import { fib, fibByDp } from "../../src/leetcode/算法-动态规划/509. 斐波那契数";
 import { change } from "../../src/leetcode/算法-动态规划/518.零钱兑换 II";
 import { maxSubArray1, maxSubArray2 } from "../../src/leetcode/算法-动态规划/53.最大子数组和";
@@ -237,6 +239,43 @@ describe("动态规划", function () {
     it("动态规划", function () {
       examples.forEach((item) => {
         const ret = change(item.arg1, item.arg2);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("392.判断子序列", function () {
+    const examples = [
+      { arg1: "abc", arg2: "ahbgdc", ret: true },
+      { arg1: "axc", arg2: "ahbgdc", ret: false },
+    ];
+    it("贪心", function () {
+      examples.forEach((item) => {
+        const ret = isSubsequence(item.arg1, item.arg2);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+    it("动态规划", function () {
+      examples.forEach((item) => {
+        const ret = isSubsequence1(item.arg1, item.arg2);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("1143.最长公共子序列", function () {
+    const examples = [
+      { arg1: "abcde", arg2: "ace", ret: 3 },
+      { arg1: "abc", arg2: "def", ret: 0 },
+    ];
+    const exams = [{ arg1: "abcbcde", arg2: "bbcbce", ret: 4 }];
+    it("动态规划", function () {
+      examples.forEach((item) => {
+        const ret = longestCommonSubsequence(item.arg1, item.arg2);
+        assert.strictEqual(ret, item.ret);
+      });
+    });
+    it("最长公共子串", function () {
+      exams.forEach((item) => {
+        const ret = maxSubString(item.arg1, item.arg2);
         assert.strictEqual(ret, item.ret);
       });
     });
