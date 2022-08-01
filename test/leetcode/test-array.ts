@@ -3,6 +3,7 @@ import { twoSum, twoSumWithMap } from "../../src/leetcode/基本-数组/1.两数
 import { isPalindrome } from "../../src/leetcode/基本-数组/125.验证回文串";
 import { threeSum } from "../../src/leetcode/基本-数组/15.三数之和";
 import { twoSum2 } from "../../src/leetcode/基本-数组/167.两数之和2";
+import { fourSum } from "../../src/leetcode/基本-数组/18.四数之和";
 import { minSubArrayLen, minSubArrayLen2 } from "../../src/leetcode/基本-数组/209.长度最小的子数组";
 import { removeDuplicates } from "../../src/leetcode/基本-数组/26.删除排序数组中的重复项";
 import { removeElement } from "../../src/leetcode/基本-数组/27.移除元素";
@@ -174,6 +175,26 @@ describe("数组", function () {
       examples.forEach((item) => {
         const ret = isPalindrome(item.arg1);
         assert.strictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("18.四数之和", function () {
+    const examples = [
+      {
+        arg1: [1, 0, -1, 0, -2, 2],
+        arg2: 0,
+        ret: [
+          [-2, -1, 1, 2],
+          [-2, 0, 0, 2],
+          [-1, 0, 0, 1],
+        ],
+      },
+      { arg1: [2, 2, 2, 2, 2], arg2: 8, ret: [[2, 2, 2, 2]] },
+    ];
+    it("回溯", function () {
+      examples.forEach((item) => {
+        const ret = fourSum(item.arg1, item.arg2);
+        assert.deepStrictEqual(ret, item.ret);
       });
     });
   });

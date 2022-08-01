@@ -25,7 +25,7 @@ export function threeSum(nums: number[]): number[][] {
     while (left < right) {
       if (nums[i] + nums[left] + nums[right] === 0) {
         arr.push([nums[i], nums[left], nums[right]]);
-        // 因为要找出全部 所以继续找
+        // 去重
         while (left < right && nums[left] === nums[left + 1]) left++; // 去重
         while (left < right && nums[right] === nums[right - 1]) right--; // 去重
         left++;
