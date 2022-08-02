@@ -3,6 +3,7 @@ import { isHappy, isHappy2 } from "../../src/leetcode/其他/哈希表/202.快�
 import { isAnagram } from "../../src/leetcode/其他/哈希表/242.有效的字母异位词";
 import { intersection } from "../../src/leetcode/其他/哈希表/345.两个数组的交集";
 import { canConstruct } from "../../src/leetcode/其他/哈希表/383.赎金信";
+import { isPowerOfThree } from "../../src/leetcode/其他/数学/326.3 的幂";
 
 describe("其他", function () {
   describe("哈希表", function () {
@@ -57,6 +58,20 @@ describe("其他", function () {
         exams.forEach((exam) => {
           const ret = intersection(exam.arg1, exam.arg2);
           assert.deepStrictEqual(ret, exam.ret);
+        });
+      });
+    });
+  });
+  describe("数学", function () {
+    describe("326.3 的幂", function () {
+      const exams = [
+        { arg1: 27, ret: true },
+        { arg1: 45, ret: false },
+      ];
+      it("循环", function () {
+        exams.forEach((exam) => {
+          const ret = isPowerOfThree(exam.arg1);
+          assert.strictEqual(ret, exam.ret);
         });
       });
     });
