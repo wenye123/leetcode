@@ -63,7 +63,9 @@ export function swapSort2(nums: number[]) {
  */
 export function bubbleSort(nums: number[]) {
   for (let i = 0; i < nums.length - 1; i++) {
+    // 交换len-1次
     for (let j = 0; j < nums.length - 1 - i; j++) {
+      // 两两交换
       if (nums[j] > nums[j + 1]) {
         swap(nums, j, j + 1);
       }
@@ -208,8 +210,8 @@ export function fastSort1(nums: number[]): number[] {
   if (nums.length <= 1) return nums;
   const index = Math.floor(nums.length / 2); // 取中间值当基点
   const curr = nums[index];
-  const left = [];
-  const right = [];
+  const left = [],
+    right = [];
   for (let i = 0; i < nums.length; i++) {
     if (i === index) {
       continue;
@@ -255,21 +257,17 @@ export function fastSort3(nums: number[]) {
   const stack: Array<number[]> = [];
   // 将初始左右索引推入栈中
   stack.push([0, nums.length - 1]);
-  log("stack", stack);
   // 只要存在未排序的子数组则循环
   while (stack.length > 0) {
     const [left, right] = stack.pop()!;
-    log("pop", [left, right]);
     const pivot = partition(nums, left, right);
     // 左侧有未排序元素则推入栈
     if (pivot - 1 > left) {
       stack.push([left, pivot - 1]);
-      log("stack", stack);
     }
     // 右侧有未排序元素则推入栈
     if (pivot + 1 < right) {
       stack.push([pivot + 1, right]);
-      log("stack", stack);
     }
   }
   return nums;

@@ -3,6 +3,7 @@ import { isHappy, isHappy2 } from "../../src/leetcode/其他/哈希表/202.快�
 import { isAnagram } from "../../src/leetcode/其他/哈希表/242.有效的字母异位词";
 import { intersection } from "../../src/leetcode/其他/哈希表/345.两个数组的交集";
 import { canConstruct } from "../../src/leetcode/其他/哈希表/383.赎金信";
+import { findKthLargest } from "../../src/leetcode/其他/堆/215.数组中的第K个最大元素";
 import { isPowerOfThree } from "../../src/leetcode/其他/数学/326.3 的幂";
 
 describe("其他", function () {
@@ -71,6 +72,26 @@ describe("其他", function () {
       it("循环", function () {
         exams.forEach((exam) => {
           const ret = isPowerOfThree(exam.arg1);
+          assert.strictEqual(ret, exam.ret);
+        });
+      });
+    });
+  });
+  describe("堆", function () {
+    describe("215.数组中的第K个最大元素", function () {
+      const exams = [
+        { arg1: [3, 2, 1, 5, 6, 4], arg2: 2, ret: 5 },
+        { arg1: [3, 2, 3, 1, 2, 4, 5, 5, 6], arg2: 4, ret: 4 },
+      ];
+      it("堆", function () {
+        exams.forEach((exam) => {
+          const ret = findKthLargest(exam.arg1, exam.arg2);
+          assert.strictEqual(ret, exam.ret);
+        });
+      });
+      it("快速排序", function () {
+        exams.forEach((exam) => {
+          const ret = findKthLargest(exam.arg1, exam.arg2);
           assert.strictEqual(ret, exam.ret);
         });
       });
