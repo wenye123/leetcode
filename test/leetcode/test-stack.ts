@@ -1,6 +1,7 @@
 import assert from "assert";
 import { removeDuplicates } from "../../src/leetcode/数据结构-栈/1047.删除字符串中的所有相邻重复项";
 import { evalRPN } from "../../src/leetcode/数据结构-栈/150.逆波兰表达式求值";
+import { MinStack } from "../../src/leetcode/数据结构-栈/155.最小栈";
 import { isValid } from "../../src/leetcode/数据结构-栈/20.有效的括号";
 import { MyStack } from "../../src/leetcode/数据结构-栈/225.用队列实现栈";
 import { MyQueue } from "../../src/leetcode/数据结构-栈/232.用栈实现队列";
@@ -81,6 +82,18 @@ describe("栈", function () {
         const ret = removeDuplicates(example.arg);
         assert.strictEqual(ret, example.ret);
       });
+    });
+  });
+  describe("155.最小栈", function () {
+    it("栈", function () {
+      const minStack = new MinStack();
+      minStack.push(-2);
+      minStack.push(0);
+      minStack.push(-3);
+      assert.strictEqual(minStack.getMin(), -3);
+      minStack.pop();
+      assert.strictEqual(minStack.top(), 0);
+      assert.strictEqual(minStack.getMin(), -2);
     });
   });
 });
