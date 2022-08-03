@@ -77,11 +77,10 @@ class Heap {
   }
   // 上浮
   private shiftUp(i: number) {
-    let parentIndex = this.getParentIndex(i);
-    while (i > 1 && this.compare(parentIndex, i) === false) {
+    while (i > 1 && this.compare(this.getParentIndex(i), i) === false) {
+      const parentIndex = this.getParentIndex(i);
       this.swap(i, parentIndex); // 交换两者的值
       i = parentIndex;
-      parentIndex = this.getParentIndex(parentIndex);
     }
   }
   // 下沉/堆化
