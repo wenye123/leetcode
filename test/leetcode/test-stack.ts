@@ -6,6 +6,7 @@ import { isValid } from "../../src/leetcode/数据结构-栈/20.有效的括号"
 import { MyStack } from "../../src/leetcode/数据结构-栈/225.用队列实现栈";
 import { MyQueue } from "../../src/leetcode/数据结构-栈/232.用栈实现队列";
 import { nextGreaterElement } from "../../src/leetcode/数据结构-栈/496.下一个更大元素 I";
+import { nextGreaterElements } from "../../src/leetcode/数据结构-栈/503.下一个更大元素 II";
 import { simplifyPath } from "../../src/leetcode/数据结构-栈/71.简化路径";
 import { dailyTemperatures } from "../../src/leetcode/数据结构-栈/739.每日温度";
 
@@ -118,6 +119,18 @@ describe("栈", function () {
     it("单调栈", function () {
       exams.forEach((exam) => {
         const ret = nextGreaterElement(exam.arg1, exam.arg2);
+        assert.deepStrictEqual(ret, exam.ret);
+      });
+    });
+  });
+  describe("503.下一个更大元素 II", function () {
+    const exams = [
+      { arg1: [1, 2, 1], ret: [2, -1, 2] },
+      { arg1: [1, 2, 3, 4, 3], ret: [2, 3, 4, -1, 4] },
+    ];
+    it("单调栈", function () {
+      exams.forEach((exam) => {
+        const ret = nextGreaterElements(exam.arg1);
         assert.deepStrictEqual(ret, exam.ret);
       });
     });
