@@ -6,6 +6,7 @@ import { isValid } from "../../src/leetcode/数据结构-栈/20.有效的括号"
 import { MyStack } from "../../src/leetcode/数据结构-栈/225.用队列实现栈";
 import { MyQueue } from "../../src/leetcode/数据结构-栈/232.用栈实现队列";
 import { simplifyPath } from "../../src/leetcode/数据结构-栈/71.简化路径";
+import { dailyTemperatures } from "../../src/leetcode/数据结构-栈/739.每日温度";
 
 describe("栈", function () {
   describe("20.有效的括号", function () {
@@ -94,6 +95,18 @@ describe("栈", function () {
       minStack.pop();
       assert.strictEqual(minStack.top(), 0);
       assert.strictEqual(minStack.getMin(), -2);
+    });
+  });
+  describe("739.每日温度", function () {
+    const exams = [
+      { arg1: [73, 74, 75, 71, 69, 72, 76, 73], ret: [1, 1, 4, 2, 1, 1, 0, 0] },
+      { arg1: [30, 40, 50, 60], ret: [1, 1, 1, 0] },
+    ];
+    it("单调栈", function () {
+      exams.forEach((exam) => {
+        const ret = dailyTemperatures(exam.arg1);
+        assert.deepStrictEqual(ret, exam.ret);
+      });
     });
   });
 });

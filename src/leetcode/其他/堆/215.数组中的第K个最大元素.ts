@@ -16,7 +16,7 @@ import { MinHeap } from "../../../base/Heap";
 //   return nums[nums.length - k];
 // }
 
-/** 堆排序 */
+/** 堆 */
 export function findKthLargest(nums: number[], k: number): number {
   const heap = new MinHeap();
   for (let num of nums) {
