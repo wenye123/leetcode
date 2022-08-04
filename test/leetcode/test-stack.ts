@@ -5,6 +5,7 @@ import { MinStack } from "../../src/leetcode/数据结构-栈/155.最小栈";
 import { isValid } from "../../src/leetcode/数据结构-栈/20.有效的括号";
 import { MyStack } from "../../src/leetcode/数据结构-栈/225.用队列实现栈";
 import { MyQueue } from "../../src/leetcode/数据结构-栈/232.用栈实现队列";
+import { nextGreaterElement } from "../../src/leetcode/数据结构-栈/496.下一个更大元素 I";
 import { simplifyPath } from "../../src/leetcode/数据结构-栈/71.简化路径";
 import { dailyTemperatures } from "../../src/leetcode/数据结构-栈/739.每日温度";
 
@@ -105,6 +106,18 @@ describe("栈", function () {
     it("单调栈", function () {
       exams.forEach((exam) => {
         const ret = dailyTemperatures(exam.arg1);
+        assert.deepStrictEqual(ret, exam.ret);
+      });
+    });
+  });
+  describe("496.下一个更大元素 I", function () {
+    const exams = [
+      { arg1: [4, 1, 2], arg2: [1, 3, 4, 2], ret: [-1, 3, -1] },
+      { arg1: [2, 4], arg2: [1, 2, 3, 4], ret: [3, -1] },
+    ];
+    it("单调栈", function () {
+      exams.forEach((exam) => {
+        const ret = nextGreaterElement(exam.arg1, exam.arg2);
         assert.deepStrictEqual(ret, exam.ret);
       });
     });
