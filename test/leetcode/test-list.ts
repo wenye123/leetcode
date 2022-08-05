@@ -325,7 +325,7 @@ describe("链表", function () {
       });
     });
   });
-  describe("146.LRU缓存", function () {
+  describe("460.LFU 缓存", function () {
     it("链表", function () {
       const lfu = new LFUCache(2);
       lfu.put(1, 1);

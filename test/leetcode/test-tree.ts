@@ -22,6 +22,7 @@ import { recoverTree } from "../../src/leetcode/数据结构-树/99.恢复二叉
 import { sortedArrayToBST } from "../../src/leetcode/数据结构-树/108.将有序数组转换为二叉搜索树";
 import { constructMaximumBinaryTree } from "../../src/leetcode/数据结构-树/654.最大二叉树";
 import { kthSmallest } from "../../src/leetcode/数据结构-树/230.二叉搜索树中第K小的元素";
+import { Trie } from "../../src/leetcode/数据结构-树/208.实现 Trie (前缀树)";
 
 describe("树", function () {
   describe("104.二叉树的最大深度", function () {
@@ -446,6 +447,17 @@ describe("树", function () {
         const ret = kthSmallest(example.arg1, example.arg2);
         assert.deepStrictEqual(ret, example.ret);
       });
+    });
+  });
+  describe("208.实现 Trie (前缀树)", function () {
+    it("map实现", function () {
+      const trie = new Trie();
+      trie.insert("apple");
+      assert.strictEqual(trie.search("apple"), true);
+      assert.strictEqual(trie.search("app"), false);
+      assert.strictEqual(trie.startsWith("app"), true);
+      trie.insert("app");
+      assert.strictEqual(trie.search("app"), true);
     });
   });
 });
