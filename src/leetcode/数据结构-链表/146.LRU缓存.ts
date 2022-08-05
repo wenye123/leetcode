@@ -1,12 +1,17 @@
 /**
  * https://leetcode.cn/problems/lru-cache/
  *
- * LRU缓存指的就是 最近最少使用(删除)
+ * LRU缓存指的就是按照顺序 最近未使用删除
  *   新数据插入链表头部
  *   如果缓存命中 则将数据移到链表头部
  *   链表满时候 将链表尾部的去掉
  *
  * 因为get和put都需要O(1) 所以只能采用哈希表来做
+ *
+ * 例子:
+ *   最大3个数 值: [1,2,3]
+ *   访问顺序: 1 1 1 2 3
+ *   新增值时需要删除的值为1 因为最近访问了3和2 1是最早访问的
  */
 
 /**
@@ -35,6 +40,7 @@ export class LRUCache {
   }
 
   put(key: number, value: number): void {
+    if (this.capacity === 0) return;
     if (this.map.has(key)) {
       // 如果缓存存在则变更内容 也是先删除后添加新值
       this.map.delete(key);

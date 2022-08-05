@@ -13,6 +13,7 @@ import {
 import { reverseList } from "../../src/leetcode/数据结构-链表/206.反转链表";
 import { mergeTwoLists, mergeTwoLists2 } from "../../src/leetcode/数据结构-链表/22.合并有序链表";
 import { isPalindrome } from "../../src/leetcode/数据结构-链表/234.回文链表";
+import { LFUCache } from "../../src/leetcode/数据结构-链表/460.LFU 缓存";
 import { middleNode } from "../../src/leetcode/数据结构-链表/876.链表的中间结点";
 import { reverseBetween } from "../../src/leetcode/数据结构-链表/92.反转链表 II";
 
@@ -322,6 +323,21 @@ describe("链表", function () {
         const ret = getIntersectionNode2(example.arg1, example.arg2);
         assert.deepStrictEqual(ret && ret.val, example.ret);
       });
+    });
+  });
+  describe("146.LRU缓存", function () {
+    it("链表", function () {
+      const lfu = new LFUCache(2);
+      lfu.put(1, 1);
+      lfu.put(2, 2);
+      assert.strictEqual(lfu.get(1), 1);
+      lfu.put(3, 3);
+      assert.strictEqual(lfu.get(2), -1);
+      assert.strictEqual(lfu.get(3), 3);
+      lfu.put(4, 4);
+      assert.strictEqual(lfu.get(1), -1);
+      assert.strictEqual(lfu.get(3), 3);
+      assert.strictEqual(lfu.get(4), 4);
     });
   });
 });
