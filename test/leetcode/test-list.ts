@@ -14,6 +14,7 @@ import { reverseList } from "../../src/leetcode/数据结构-链表/206.反转�
 import { mergeTwoLists, mergeTwoLists2 } from "../../src/leetcode/数据结构-链表/22.合并有序链表";
 import { isPalindrome } from "../../src/leetcode/数据结构-链表/234.回文链表";
 import { LFUCache } from "../../src/leetcode/数据结构-链表/460.LFU 缓存";
+import { MyLinkedList } from "../../src/leetcode/数据结构-链表/707.设计链表";
 import { middleNode } from "../../src/leetcode/数据结构-链表/876.链表的中间结点";
 import { reverseBetween } from "../../src/leetcode/数据结构-链表/92.反转链表 II";
 
@@ -338,6 +339,17 @@ describe("链表", function () {
       assert.strictEqual(lfu.get(1), -1);
       assert.strictEqual(lfu.get(3), 3);
       assert.strictEqual(lfu.get(4), 4);
+    });
+  });
+  describe("707.设计链表", function () {
+    it("链表", function () {
+      const linkedList = new MyLinkedList();
+      linkedList.addAtHead(1);
+      linkedList.addAtTail(3);
+      linkedList.addAtIndex(1, 2);
+      assert.strictEqual(linkedList.get(1), 2); //返回2
+      linkedList.deleteAtIndex(1);
+      assert.strictEqual(linkedList.get(1), 3); //返回2
     });
   });
 });
