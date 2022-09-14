@@ -9,7 +9,7 @@
 
 type Task<T> = (() => Promise<T>) & { resolve?: Function };
 
-class Scheduler<T = number> {
+export class Scheduler<T = number> {
   private restCount: number; // 剩余可执行次数
   private waitQueue: Task<T>[] = []; // 等待队列
 
@@ -45,21 +45,21 @@ class Scheduler<T = number> {
   }
 }
 
-function timeout(ms: number, data: number): Promise<number> {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(data);
-    }, ms);
-  });
-}
+// function timeout(ms: number, data: number): Promise<number> {
+//   return new Promise((resolve) => {
+//     setTimeout(() => {
+//       resolve(data);
+//     }, ms);
+//   });
+// }
 
-const scheduler = new Scheduler(2);
-function addTask(ms: number, data: number) {
-  return scheduler.add(() => timeout(ms, data)).then((data) => console.log(data));
-}
+// const scheduler = new Scheduler(2);
+// function addTask(ms: number, data: number) {
+//   return scheduler.add(() => timeout(ms, data)).then((data) => console.log(data));
+// }
 
-addTask(1000, 1);
-addTask(500, 2);
-addTask(300, 3);
-addTask(400, 4);
+// addTask(1000, 1);
+// addTask(500, 2);
+// addTask(300, 3);
+// addTask(400, 4);
 // 2 3 1 4
