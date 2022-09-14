@@ -1,5 +1,6 @@
 import { assert } from "chai";
 import { AuthenticationManager } from "../../src/leetcode/面试/1797.设计一个验证系统";
+import { RecentCounter } from "../../src/leetcode/面试/933.最近的请求次数";
 import { Scheduler } from "../../src/leetcode/面试/带并发限制的异步调度器";
 
 function timeout(ms: number, data: number): Promise<number> {
@@ -34,6 +35,15 @@ describe("面试", function () {
       manager.renew("aaa", 8);
       manager.renew("bbb", 10);
       assert.strictEqual(manager.countUnexpiredTokens(15), 0);
+    });
+  });
+  describe("933.最近的请求次数", function () {
+    it("实现", function () {
+      const counter = new RecentCounter();
+      assert.strictEqual(counter.ping(1), 1);
+      assert.strictEqual(counter.ping(100), 2);
+      assert.strictEqual(counter.ping(3001), 3);
+      assert.strictEqual(counter.ping(3002), 3);
     });
   });
 });
