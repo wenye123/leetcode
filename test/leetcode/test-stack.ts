@@ -1,5 +1,6 @@
 import assert from "assert";
 import { removeDuplicates } from "../../src/leetcode/数据结构-栈/1047.删除字符串中的所有相邻重复项";
+import { BrowserHistory } from "../../src/leetcode/数据结构-栈/1472.设计浏览器历史记录";
 import { evalRPN } from "../../src/leetcode/数据结构-栈/150.逆波兰表达式求值";
 import { MinStack } from "../../src/leetcode/数据结构-栈/155.最小栈";
 import { isValid } from "../../src/leetcode/数据结构-栈/20.有效的括号";
@@ -133,6 +134,21 @@ describe("栈", function () {
         const ret = nextGreaterElements(exam.arg1);
         assert.deepStrictEqual(ret, exam.ret);
       });
+    });
+  });
+  describe("1472.设计浏览器历史记录", function () {
+    it("栈实现", function () {
+      const history = new BrowserHistory("leetcode.com");
+      history.visit("google.com");
+      history.visit("facebook.com");
+      history.visit("youtube.com");
+      assert.strictEqual(history.back(1), "facebook.com");
+      assert.strictEqual(history.back(1), "google.com");
+      assert.strictEqual(history.forward(1), "facebook.com");
+      history.visit("link.com");
+      assert.strictEqual(history.forward(2), "link.com");
+      assert.strictEqual(history.back(2), "google.com");
+      assert.strictEqual(history.back(7), "leetcode.com");
     });
   });
 });
