@@ -12,6 +12,7 @@ import {
 } from "../../src/leetcode/数据结构-链表/203.移除链表元素";
 import { reverseList } from "../../src/leetcode/数据结构-链表/206.反转链表";
 import { mergeTwoLists, mergeTwoLists2 } from "../../src/leetcode/数据结构-链表/22.合并有序链表";
+import { mergeKLists } from "../../src/leetcode/数据结构-链表/23.合并K个升序链表";
 import { isPalindrome } from "../../src/leetcode/数据结构-链表/234.回文链表";
 import { LFUCache } from "../../src/leetcode/数据结构-链表/460.LFU 缓存";
 import { MyLinkedList } from "../../src/leetcode/数据结构-链表/707.设计链表";
@@ -350,6 +351,20 @@ describe("链表", function () {
       assert.strictEqual(linkedList.get(1), 2); //返回2
       linkedList.deleteAtIndex(1);
       assert.strictEqual(linkedList.get(1), 3); //返回2
+    });
+  });
+  describe("23.合并K个升序链表", function () {
+    const CASES = [
+      {
+        arg: [createListTail([1, 4, 5]), createListTail([1, 3, 4]), createListTail([2, 6])],
+        ret: [1, 1, 2, 3, 4, 4, 5, 6],
+      },
+    ];
+    it("多路归并", function () {
+      CASES.forEach((item) => {
+        const ret = mergeKLists(item.arg);
+        assert.deepStrictEqual(traversalList(ret), item.ret);
+      });
     });
   });
 });
