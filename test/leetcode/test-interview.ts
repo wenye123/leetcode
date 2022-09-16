@@ -2,6 +2,7 @@ import { assert } from "chai";
 import { createListTail, traversalList } from "../../src/base/List";
 import { sortList } from "../../src/leetcode/面试/148.排序链表";
 import { AuthenticationManager } from "../../src/leetcode/面试/1797.设计一个验证系统";
+import { addTwoNumbers } from "../../src/leetcode/面试/2.两数相加";
 import { flatByRecursive, flatByStack } from "../../src/leetcode/面试/341.扁平化嵌套列表迭代器";
 import { RandomizedSet } from "../../src/leetcode/面试/380.RandomSet";
 import { Solution } from "../../src/leetcode/面试/384.打乱数组";
@@ -109,6 +110,26 @@ describe("面试", function () {
       CASES.forEach((item) => {
         const ret = flatByStack(item.arg);
         assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+  });
+  describe("2.两数相加", function () {
+    const CASES = [
+      {
+        arg1: createListTail([2, 4, 3]),
+        arg2: createListTail([5, 6, 4]),
+        ret: [7, 0, 8],
+      },
+      {
+        arg1: createListTail([9, 9, 9, 9, 9, 9, 9]),
+        arg2: createListTail([9, 9, 9, 9]),
+        ret: [8, 9, 9, 9, 0, 0, 0, 1],
+      },
+    ];
+    it("直接相加", function () {
+      CASES.forEach((item) => {
+        const ret = addTwoNumbers(item.arg1, item.arg2);
+        assert.deepStrictEqual(traversalList(ret), item.ret);
       });
     });
   });
