@@ -1,3 +1,7 @@
+/**
+ * https://leetcode.cn/problems/design-authentication-manager/
+ */
+
 export class AuthenticationManager {
   private timeToLive: number; // 过期时间
   private map: Record<string, [number, number]> = {}; // 验证码

@@ -1,3 +1,7 @@
+/**
+ * https://leetcode.cn/problems/design-browser-history/
+ */
+
 export class BrowserHistory {
   private backStack: string[] = [];
   private forwardStack: string[] = [];

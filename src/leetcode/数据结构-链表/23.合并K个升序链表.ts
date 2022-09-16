@@ -1,3 +1,7 @@
+/**
+ * https://leetcode.cn/problems/merge-k-sorted-lists/
+ */
+
 import { List, ListNode } from "../../base/List";
 
 /** 多指针+尾插法 n^2 不推荐 */

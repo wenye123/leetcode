@@ -1,3 +1,7 @@
+/**
+ * https://leetcode.cn/problems/number-of-recent-calls/
+ */
+
 export class RecentCounter {
   private pings: number[] = [];
 

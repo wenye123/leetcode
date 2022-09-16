@@ -1,4 +1,6 @@
 import { assert } from "chai";
+import { createListTail, traversalList } from "../../src/base/List";
+import { sortList } from "../../src/leetcode/面试/148.排序链表";
 import { AuthenticationManager } from "../../src/leetcode/面试/1797.设计一个验证系统";
 import { RecentCounter } from "../../src/leetcode/面试/933.最近的请求次数";
 import { Scheduler } from "../../src/leetcode/面试/带并发限制的异步调度器";
@@ -44,6 +46,24 @@ describe("面试", function () {
       assert.strictEqual(counter.ping(100), 2);
       assert.strictEqual(counter.ping(3001), 3);
       assert.strictEqual(counter.ping(3002), 3);
+    });
+  });
+  describe("148.排序链表", function () {
+    const CASES = [
+      {
+        arg: createListTail([-1, 5, 3, 4, 0]),
+        ret: [-1, 0, 3, 4, 5],
+      },
+      {
+        arg: createListTail([]),
+        ret: [],
+      },
+    ];
+    it("转换数组", function () {
+      CASES.forEach((item) => {
+        const ret = sortList(item.arg);
+        assert.deepStrictEqual(traversalList(ret), item.ret);
+      });
     });
   });
 });
