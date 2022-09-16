@@ -3,7 +3,7 @@ import { createListTail, traversalList } from "../../src/base/List";
 import { sortList } from "../../src/leetcode/面试/148.排序链表";
 import { AuthenticationManager } from "../../src/leetcode/面试/1797.设计一个验证系统";
 import { addTwoNumbers } from "../../src/leetcode/面试/2.两数相加";
-import { flatByRecursive, flatByStack } from "../../src/leetcode/面试/341.扁平化嵌套列表迭代器";
+import { flatByRecursive, flatByStack } from "../../src/leetcode/面试/扁平化数组";
 import { RandomizedSet } from "../../src/leetcode/面试/380.RandomSet";
 import { Solution } from "../../src/leetcode/面试/384.打乱数组";
 import { RecentCounter } from "../../src/leetcode/面试/933.最近的请求次数";

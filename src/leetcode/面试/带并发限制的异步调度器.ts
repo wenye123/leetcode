@@ -19,6 +19,7 @@ export class Scheduler<T = number> {
 
   // 运行任务
   private runTask(task: Task<T>) {
+    this.restCount--; // 剩余次数-1
     task().then((data) => {
       task.resolve!(data); // 执行resolve
       this.restCount++; // 执行后次数+1
@@ -26,7 +27,6 @@ export class Scheduler<T = number> {
       if (this.restCount > 0 && this.waitQueue.length > 0) {
         const task = this.waitQueue.shift()!;
         this.runTask(task);
-        this.restCount--; // 添加执行次数-1
       }
     });
   }
@@ -37,7 +37,6 @@ export class Scheduler<T = number> {
       task.resolve = resolve; // 将resolve传递
       if (this.restCount > 0) {
         this.runTask(task);
-        this.restCount--;
       } else {
         this.waitQueue.push(task);
       }
