@@ -2,6 +2,7 @@ import { assert } from "chai";
 import { createListTail, traversalList } from "../../src/base/List";
 import { sortList } from "../../src/leetcode/面试/148.排序链表";
 import { AuthenticationManager } from "../../src/leetcode/面试/1797.设计一个验证系统";
+import { Solution } from "../../src/leetcode/面试/384.打乱数组";
 import { RecentCounter } from "../../src/leetcode/面试/933.最近的请求次数";
 import { Scheduler } from "../../src/leetcode/面试/带并发限制的异步调度器";
 
@@ -64,6 +65,14 @@ describe("面试", function () {
         const ret = sortList(item.arg);
         assert.deepStrictEqual(traversalList(ret), item.ret);
       });
+    });
+  });
+  describe("384.打乱数组", function () {
+    it("实现", function () {
+      const nums = [1, 2, 3, 4, 5, 6];
+      const solution = new Solution(nums);
+      assert.notDeepEqual(solution.shuffle(), nums); // 这里的判断逻辑是有问题的 有一定概率会相等
+      assert.deepStrictEqual(solution.reset(), nums);
     });
   });
 });
