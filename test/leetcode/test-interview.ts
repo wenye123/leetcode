@@ -2,6 +2,7 @@ import { assert } from "chai";
 import { createListTail, traversalList } from "../../src/base/List";
 import { sortList } from "../../src/leetcode/面试/148.排序链表";
 import { AuthenticationManager } from "../../src/leetcode/面试/1797.设计一个验证系统";
+import { flatByRecursive, flatByStack } from "../../src/leetcode/面试/341.扁平化嵌套列表迭代器";
 import { RandomizedSet } from "../../src/leetcode/面试/380.RandomSet";
 import { Solution } from "../../src/leetcode/面试/384.打乱数组";
 import { RecentCounter } from "../../src/leetcode/面试/933.最近的请求次数";
@@ -85,6 +86,30 @@ describe("面试", function () {
       assert.strictEqual(randomSet.remove(1), true);
       assert.strictEqual(randomSet.insert(2), true);
       assert.strictEqual(randomSet.getRandom(), 2);
+    });
+  });
+  describe("扁平化数组", function () {
+    const CASES = [
+      {
+        arg: [1, [2, [3, [4, 5]]], 6] as any,
+        ret: [1, 2, 3, 4, 5, 6],
+      },
+      {
+        arg: [],
+        ret: [],
+      },
+    ];
+    it("递归", function () {
+      CASES.forEach((item) => {
+        const ret = flatByRecursive(item.arg);
+        assert.deepStrictEqual(ret, item.ret);
+      });
+    });
+    it("通过栈", function () {
+      CASES.forEach((item) => {
+        const ret = flatByStack(item.arg);
+        assert.deepStrictEqual(ret, item.ret);
+      });
     });
   });
 });
